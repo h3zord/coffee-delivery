@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Checkout } from './pages/Checkout'
 import { Sucess } from './pages/Sucess'
-import { DefaultLayout } from './layouts/DefaultLayout'
+import { DefaultLayout } from './layouts/default'
 
 export function Router() {
   return (
