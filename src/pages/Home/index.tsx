@@ -1,3 +1,5 @@
+import { Introduction } from '../../components/Introduction'
+
 export function Home() {
-  return <div>Home</div>
+  return <Introduction />
 }
