@@ -14,8 +14,10 @@ export const HeaderContainer = styled.header`
   }
 
   div span {
+    font-size: 0.875rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 9rem;
     height: 2.375rem;
     color: ${(props) => props.theme['purple-dark']};
@@ -27,5 +29,9 @@ export const HeaderContainer = styled.header`
 
   div nav img {
     display: flex;
+  }
+
+  div nav img:hover {
+    opacity: 0.9;
   }
 `

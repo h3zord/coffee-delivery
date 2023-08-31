@@ -2,14 +2,10 @@ import styled from 'styled-components'
 
 export const IntroductionContainer = styled.section`
   height: 34rem;
-  /* width: 70rem; */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3.5rem;
-
-  img {
-  }
 `
 
 export const IntroductionText = styled.div`
@@ -29,7 +25,6 @@ export const IntroductionText = styled.div`
   & > div:last-child {
     width: 36rem;
     height: 5.25rem;
-
     display: flex;
     flex-wrap: wrap;
   }
