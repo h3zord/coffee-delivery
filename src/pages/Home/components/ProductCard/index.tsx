@@ -1,7 +1,7 @@
 import { ProductCardContainer } from './styles'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
-import coffee from '../../assets/chocolate-quente.svg'
-import { ProductQuantity } from '../ProductQuantity'
+import coffee from '../../../../assets/chocolate-quente.svg'
+import { ProductQuantity } from '../../../../components/ProductQuantity'
 
 export function ProductCard() {
   return (
