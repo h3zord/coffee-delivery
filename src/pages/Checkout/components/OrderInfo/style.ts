@@ -65,6 +65,10 @@ export const FormContent = styled.form`
     line-height: 1.3;
   }
 
+  input:focus {
+    box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
+  }
+
   input::placeholder {
     font-family: 'Roboto', sans-serif;
     font-size: 0.875rem;

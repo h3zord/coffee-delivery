@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   margin: 0 10rem;
 
-  div {
+  & > div {
     display: flex;
     justify-content: space-between;
     width: 12rem;
@@ -27,11 +27,31 @@ export const HeaderContainer = styled.header`
     font-family: 'Roboto', sans-serif;
   }
 
-  div nav img {
+  .cart-button {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.375rem;
+    height: 2.375rem;
+    border-radius: 6px;
+    background-color: ${(props) => props.theme['yellow-light']};
   }
 
-  div nav img:hover {
-    opacity: 0.9;
+  & > div div:nth-child(3) {
+    position: absolute;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.3;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 152px;
+    top: 25px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: ${(props) => props.theme.white};
+    background-color: ${(props) => props.theme['yellow-dark']};
   }
 `

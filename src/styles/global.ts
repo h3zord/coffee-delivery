@@ -13,6 +13,5 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: transparent;
-    box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
   }
 `
