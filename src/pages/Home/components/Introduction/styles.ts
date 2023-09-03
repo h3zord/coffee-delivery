@@ -1,13 +1,5 @@
 import styled from 'styled-components'
 
-export const IntroductionContainer = styled.section`
-  height: 34rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3.5rem;
-`
-
 export const IntroductionText = styled.div`
   height: 21.375rem;
   display: flex;

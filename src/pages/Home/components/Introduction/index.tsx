@@ -1,4 +1,4 @@
-import { IntroductionContainer, IntroductionText } from './styles'
+import { IntroductionText } from './styles'
 import introduction from '../../../../assets/introduction.svg'
 import cartIcon from '../../../../assets/cart-icon.svg'
 import boxIcon from '../../../../assets/box-icon.svg'
@@ -7,7 +7,7 @@ import coffeeIcon from '../../../../assets/coffee-icon.svg'
 
 export function Introduction() {
   return (
-    <IntroductionContainer>
+    <>
       <IntroductionText>
         <div>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>
@@ -33,6 +33,6 @@ export function Introduction() {
         </div>
       </IntroductionText>
       <img src={introduction} alt="" />
-    </IntroductionContainer>
+    </>
   )
 }
