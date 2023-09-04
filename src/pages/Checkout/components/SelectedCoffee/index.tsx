@@ -8,6 +8,7 @@ import {
 import coffee from '../../../../assets/chocolate-quente.svg'
 import { ProductQuantity } from '../../../../components/ProductQuantity'
 import { Trash } from '@phosphor-icons/react'
+import { NavLink } from 'react-router-dom'
 
 export function SelectedCoffee() {
   return (
@@ -45,7 +46,9 @@ export function SelectedCoffee() {
             <span>R$ 33,20</span>
           </div>
         </TotalPriceContent>
-        <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
+        <NavLink to={'/sucess'}>
+          <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
+        </NavLink>
       </SelectedCoffeeContent>
     </SelectedCoffeeContainer>
   )
