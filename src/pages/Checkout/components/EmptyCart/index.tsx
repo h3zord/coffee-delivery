@@ -1,6 +1,5 @@
-import { EmptyCartContainer } from './style'
+import { BackToHome, EmptyCartContainer } from './style'
 import emptyCart from '../../../../assets/empty-cart.svg'
-import { ConfirmButton } from '../SelectedCoffee/style'
 import { NavLink } from 'react-router-dom'
 
 export function EmptyCart() {
@@ -9,7 +8,7 @@ export function EmptyCart() {
       <h1>Seu carrinho está vazio!</h1>
       <img src={emptyCart} alt="" />
       <NavLink to={'/'}>
-        <ConfirmButton>ESCOLHER MEU CAFÉ</ConfirmButton>
+        <BackToHome>ESCOLHER MEU CAFÉ</BackToHome>
       </NavLink>
     </EmptyCartContainer>
   )

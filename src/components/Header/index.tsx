@@ -14,10 +14,10 @@ export function Header() {
           <NavLink to={'/checkout'} title="Redirect to checkout">
             <div className="cart-button">
               <ShoppingCart size="22" weight="fill" color="#C47F17" />
+              <div className="counter-coffee">3</div>
             </div>
           </NavLink>
         </nav>
-        <div>3</div>
       </div>
     </HeaderContainer>
   )

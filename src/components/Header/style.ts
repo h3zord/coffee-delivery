@@ -4,8 +4,9 @@ export const HeaderContainer = styled.header`
   height: 6.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 0 10rem;
+  justify-content: center;
+  gap: 58.5%;
+  width: 100vw;
 
   & > div {
     display: flex;
@@ -28,6 +29,7 @@ export const HeaderContainer = styled.header`
   }
 
   .cart-button {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,9 +37,14 @@ export const HeaderContainer = styled.header`
     height: 2.375rem;
     border-radius: 6px;
     background-color: ${(props) => props.theme['yellow-light']};
+    opacity: 0.9;
   }
 
-  & > div div:nth-child(3) {
+  .cart-button:hover {
+    opacity: 1;
+  }
+
+  .counter-coffee {
     position: absolute;
     border-radius: 50px;
     font-family: 'Roboto', sans-serif;
@@ -47,11 +54,12 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
-    right: 152px;
-    top: 25px;
+    right: -10px;
+    top: -10px;
     font-weight: 700;
     font-size: 0.75rem;
     color: ${(props) => props.theme.white};
     background-color: ${(props) => props.theme['yellow-dark']};
+    text-decoration: none;
   }
 `

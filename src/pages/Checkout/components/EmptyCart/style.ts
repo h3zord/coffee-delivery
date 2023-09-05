@@ -16,9 +16,28 @@ export const EmptyCartContainer = styled.div`
   & > h1 {
     font-size: 2rem;
     line-height: 1.3;
-    color: ${(props) => props.theme['yellow-dark']};
+    color: ${(props) => props.theme['purple-dark']};
     font-family: 'Baloo 2', sans-serif;
     font-weight: 800;
     margin-top: 3rem;
+  }
+`
+
+export const BackToHome = styled.button`
+  width: 20rem;
+  height: 2.875rem;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.1s;
+  font-weight: 700;
+  background-color: ${(props) => props.theme.purple};
+  color: ${(props) => props.theme.white};
+
+  &:hover {
+    background-color: ${(props) => props.theme['purple-dark']};
   }
 `
