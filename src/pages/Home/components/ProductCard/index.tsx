@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import { ProductQuantity } from '../../../../components/ProductQuantity'
 import { ProductCardContainer } from './styles'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
 import { IDataCoffee } from '../../../../interfaces'
+import { coffeeQuantityReducer } from '../../../../reducers/coffeeQuantity'
 
 export function ProductCard(coffee: IDataCoffee) {
-  const [coffeeQuantity, setCoffeeQuantity] = useState(0)
   const [dataCoffeeToAdd, setDataCoffeeToAdd] = useState({})
+
+  const [coffeeQuantity, dispatch] = useReducer(coffeeQuantityReducer, 0)
 
   useEffect(() => {
     setDataCoffeeToAdd({
@@ -19,7 +21,15 @@ export function ProductCard(coffee: IDataCoffee) {
   }, [coffee, coffeeQuantity])
 
   const addOneMoreCoffee = () => {
-    setCoffeeQuantity((state) => state + 1)
+    dispatch({
+      type: 'ADD_ONE_MORE_COFFEE',
+    })
+  }
+
+  const removeOneMoreCoffee = () => {
+    dispatch({
+      type: 'REMOVE_ONE_MORE_COFFEE',
+    })
   }
 
   return (
@@ -39,6 +49,7 @@ export function ProductCard(coffee: IDataCoffee) {
           <ProductQuantity
             coffeeQuantity={coffeeQuantity}
             addOneMoreCoffee={addOneMoreCoffee}
+            removeOneMoreCoffee={removeOneMoreCoffee}
           />
           <button>
             <ShoppingCartSimple size={22} weight="fill" />

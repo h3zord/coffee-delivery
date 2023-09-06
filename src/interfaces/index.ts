@@ -10,4 +10,9 @@ export interface IDataCoffee {
 export interface IProductQuantityProps {
   coffeeQuantity: number
   addOneMoreCoffee: () => void
+  removeOneMoreCoffee: () => void
+}
+
+export interface ICoffeeQuantityAction {
+  type: string
 }

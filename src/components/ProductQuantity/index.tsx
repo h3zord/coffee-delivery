@@ -5,10 +5,11 @@ import { Plus, Minus } from '@phosphor-icons/react'
 export function ProductQuantity({
   coffeeQuantity,
   addOneMoreCoffee,
+  removeOneMoreCoffee,
 }: IProductQuantityProps) {
   return (
     <ProductQuantityContainer>
-      <button>
+      <button onClick={() => removeOneMoreCoffee()}>
         <Minus weight="bold" size="16" />
       </button>
       <span className="quantity-value">{coffeeQuantity}</span>
