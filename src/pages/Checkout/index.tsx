@@ -7,9 +7,9 @@ export function Checkout() {
   return (
     <CheckoutContainer>
       <CheckoutContent>
-        <EmptyCart />
-        {/* <OrderInfo /> */}
-        {/* <SelectedCoffee /> */}
+        {/* <EmptyCart /> */}
+        <OrderInfo />
+        <SelectedCoffee />
       </CheckoutContent>
     </CheckoutContainer>
   )
