@@ -1,3 +1,21 @@
+import { ReactNode } from 'react'
+
+export interface IDataCoffeeCart {
+  id: string
+  name: string
+  price: number
+  thumbnail: string
+  quantity: number
+}
+
+export interface IOrderContextType {
+  addCoffeeToCart: (newCoffee: IDataCoffeeCart) => void
+}
+
+export interface IOrderContextProviderProps {
+  children: ReactNode
+}
+
 export interface IDataCoffee {
   id: string
   name: string
@@ -15,4 +33,11 @@ export interface IProductQuantityProps {
 
 export interface ICoffeeQuantityAction {
   type: string
+}
+
+export interface ICoffeeListOrderAction {
+  type: string
+  payload: {
+    newCoffee: IDataCoffeeCart
+  }
 }

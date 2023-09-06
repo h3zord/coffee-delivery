@@ -1,12 +1,19 @@
-import { useEffect, useReducer, useState } from 'react'
+import { useContext, useEffect, useReducer, useState } from 'react'
 import { ProductQuantity } from '../../../../components/ProductQuantity'
 import { ProductCardContainer } from './styles'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
-import { IDataCoffee } from '../../../../interfaces'
+import { IDataCoffee, IDataCoffeeCart } from '../../../../interfaces'
 import { coffeeQuantityReducer } from '../../../../reducers/coffeeQuantity'
+import {
+  addOneMoreCoffeeAction,
+  removeOneMoreCoffeeAction,
+} from '../../../../reducers/actions'
+import { OrderContext } from '../../../../contexts/OrderContext'
 
 export function ProductCard(coffee: IDataCoffee) {
-  const [dataCoffeeToAdd, setDataCoffeeToAdd] = useState({})
+  const { addCoffeeToCart } = useContext(OrderContext)
+
+  const [dataCoffeeToAdd, setDataCoffeeToAdd] = useState({} as IDataCoffeeCart)
 
   const [coffeeQuantity, dispatch] = useReducer(coffeeQuantityReducer, 0)
 
@@ -21,15 +28,11 @@ export function ProductCard(coffee: IDataCoffee) {
   }, [coffee, coffeeQuantity])
 
   const addOneMoreCoffee = () => {
-    dispatch({
-      type: 'ADD_ONE_MORE_COFFEE',
-    })
+    dispatch(addOneMoreCoffeeAction())
   }
 
   const removeOneMoreCoffee = () => {
-    dispatch({
-      type: 'REMOVE_ONE_MORE_COFFEE',
-    })
+    dispatch(removeOneMoreCoffeeAction())
   }
 
   return (
@@ -51,7 +54,7 @@ export function ProductCard(coffee: IDataCoffee) {
             addOneMoreCoffee={addOneMoreCoffee}
             removeOneMoreCoffee={removeOneMoreCoffee}
           />
-          <button>
+          <button onClick={() => addCoffeeToCart(dataCoffeeToAdd)}>
             <ShoppingCartSimple size={22} weight="fill" />
           </button>
         </div>
