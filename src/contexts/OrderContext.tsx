@@ -2,7 +2,9 @@ import { createContext, useReducer } from 'react'
 import { coffeeListOrderReducer } from '../reducers/coffeeListOrder'
 import {
   addCoffeeToCartAction,
-  removeCoffeeFromCartAction,
+  addOneMoreCoffeeFromOrderAction,
+  deleteCoffeeFromCartAction,
+  removeOneMoreCoffeeFromOrderAction,
 } from '../reducers/actions'
 import {
   IDataCoffeeCart,
@@ -19,13 +21,31 @@ export function OrderContextProvider({ children }: IOrderContextProviderProps) {
     dispatch(addCoffeeToCartAction(newCoffee))
   }
 
-  const removeCoffeeFromCart = (coffeeToRemove: IDataCoffeeCart) => {
-    dispatch(removeCoffeeFromCartAction(coffeeToRemove))
+  const deleteCoffeeFromCart = (coffeeToDelete: IDataCoffeeCart) => {
+    dispatch(deleteCoffeeFromCartAction(coffeeToDelete))
+  }
+
+  const addOneMoreCoffeeFromOrder = (
+    coffeeToIncreaseQuantity: IDataCoffeeCart,
+  ) => {
+    dispatch(addOneMoreCoffeeFromOrderAction(coffeeToIncreaseQuantity))
+  }
+
+  const removeOneMoreCoffeeFromOrder = (
+    coffeeToDecreaseQuantity: IDataCoffeeCart,
+  ) => {
+    dispatch(removeOneMoreCoffeeFromOrderAction(coffeeToDecreaseQuantity))
   }
 
   return (
     <OrderContext.Provider
-      value={{ coffeeListOrder, addCoffeeToCart, removeCoffeeFromCart }}
+      value={{
+        coffeeListOrder,
+        addCoffeeToCart,
+        deleteCoffeeFromCart,
+        addOneMoreCoffeeFromOrder,
+        removeOneMoreCoffeeFromOrder,
+      }}
     >
       {children}
     </OrderContext.Provider>

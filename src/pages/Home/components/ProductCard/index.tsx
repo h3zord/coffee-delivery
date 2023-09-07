@@ -50,7 +50,7 @@ export function ProductCard(coffee: IDataCoffee) {
           <span>R$</span>
           <p>{coffee.price.toFixed(2).replace('.', ',')}</p>
           <ProductQuantity
-            coffeeQuantity={coffeeQuantity}
+            dataCoffee={dataCoffeeToAdd}
             addOneMoreCoffee={addOneMoreCoffee}
             removeOneMoreCoffee={removeOneMoreCoffee}
           />

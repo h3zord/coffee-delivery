@@ -11,7 +11,11 @@ export interface IDataCoffeeCart {
 export interface IOrderContextType {
   coffeeListOrder: IDataCoffeeCart[]
   addCoffeeToCart: (newCoffee: IDataCoffeeCart) => void
-  removeCoffeeFromCart: (coffeeToRemove: IDataCoffeeCart) => void
+  deleteCoffeeFromCart: (coffeeToDelete: IDataCoffeeCart) => void
+  addOneMoreCoffeeFromOrder: (coffeeToIncreaseQuantity: IDataCoffeeCart) => void
+  removeOneMoreCoffeeFromOrder: (
+    coffeeToDecreaseQuantity: IDataCoffeeCart,
+  ) => void
 }
 
 export interface IOrderContextProviderProps {
@@ -28,9 +32,15 @@ export interface IDataCoffee {
 }
 
 export interface IProductQuantityProps {
-  coffeeQuantity: number
-  addOneMoreCoffee: () => void
-  removeOneMoreCoffee: () => void
+  dataCoffee: IDataCoffeeCart
+  addOneMoreCoffee?: () => void
+  removeOneMoreCoffee?: () => void
+  addOneMoreCoffeeFromOrder?: (
+    coffeeToIncreaseQuantity: IDataCoffeeCart,
+  ) => void
+  removeOneMoreCoffeeFromOrder?: (
+    coffeeToDecreaseQuantity: IDataCoffeeCart,
+  ) => void
 }
 
 export interface ICoffeeQuantityAction {

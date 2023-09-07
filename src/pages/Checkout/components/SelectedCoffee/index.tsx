@@ -12,7 +12,12 @@ import {
 } from './style'
 
 export function SelectedCoffee() {
-  const { coffeeListOrder, removeCoffeeFromCart } = useContext(OrderContext)
+  const {
+    coffeeListOrder,
+    deleteCoffeeFromCart,
+    addOneMoreCoffeeFromOrder,
+    removeOneMoreCoffeeFromOrder,
+  } = useContext(OrderContext)
 
   return (
     <SelectedCoffeeContainer>
@@ -26,10 +31,16 @@ export function SelectedCoffee() {
                 <div>
                   <p>{coffee.name}</p>
                   <div>
-                    <ProductQuantity coffeeQuantity={coffee.quantity} />
+                    <ProductQuantity
+                      dataCoffee={coffee}
+                      addOneMoreCoffeeFromOrder={addOneMoreCoffeeFromOrder}
+                      removeOneMoreCoffeeFromOrder={
+                        removeOneMoreCoffeeFromOrder
+                      }
+                    />
                     <button
                       className="remove-button"
-                      onClick={() => removeCoffeeFromCart(coffee)}
+                      onClick={() => deleteCoffeeFromCart(coffee)}
                     >
                       <Trash size="16" color="#8047f8" />
                       REMOVER

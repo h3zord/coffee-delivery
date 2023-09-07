@@ -6,29 +6,45 @@ export function coffeeListOrderReducer(
   state: IDataCoffeeCart[],
   action: ICoffeeListOrderAction,
 ) {
+  const coffeeIndex = state.findIndex(
+    ({ id }) => id === action.payload.dataCoffee.id,
+  )
+
   switch (action.type) {
     case ActionTypes.ADD_COFFEE_TO_CART: {
-      const isOnTheList = state.findIndex(
-        ({ id }) => id === action.payload.dataCoffee.id,
-      )
-
       if (action.payload.dataCoffee.quantity === 0) return state
 
-      if (isOnTheList > -1) {
+      if (coffeeIndex > -1) {
         return produce(state, (draft) => {
-          draft[isOnTheList].quantity = action.payload.dataCoffee.quantity
+          draft[coffeeIndex].quantity = action.payload.dataCoffee.quantity
         })
       }
 
       return [...state, action.payload.dataCoffee]
     }
 
-    case ActionTypes.REMOVE_COFFEE_FROM_CART: {
+    case ActionTypes.DELETE_COFFEE_FROM_CART: {
       const newCoffeeListOrder = state.filter(
         ({ id }) => id !== action.payload.dataCoffee.id,
       )
 
       return newCoffeeListOrder
+    }
+
+    case ActionTypes.ADD_ONE_MORE_COFFEE_FROM_ORDER: {
+      return produce(state, (draft) => {
+        draft[coffeeIndex].quantity += 1
+      })
+    }
+
+    case ActionTypes.REMOVE_ONE_MORE_COFFEE_FROM_ORDER: {
+      if (action.payload.dataCoffee.quantity > 1) {
+        return produce(state, (draft) => {
+          draft[coffeeIndex].quantity -= 1
+        })
+      }
+
+      return state
     }
   }
 
