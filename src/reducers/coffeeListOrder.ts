@@ -11,7 +11,8 @@ export function coffeeListOrderReducer(
       const isOnTheList = state.findIndex(
         ({ id }) => id === action.payload.newCoffee.id,
       )
-      console.log(isOnTheList)
+
+      if (action.payload.newCoffee.quantity === 0) return state
 
       if (isOnTheList > -1) {
         return produce(state, (draft) => {

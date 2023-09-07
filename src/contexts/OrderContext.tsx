@@ -1,11 +1,11 @@
 import { createContext, useReducer } from 'react'
+import { coffeeListOrderReducer } from '../reducers/coffeeListOrder'
+import { addCoffeeToCartAction } from '../reducers/actions'
 import {
   IDataCoffeeCart,
   IOrderContextProviderProps,
   IOrderContextType,
 } from '../interfaces'
-import { coffeeListOrderReducer } from '../reducers/coffeeListOrder'
-import { addCoffeeToCartAction } from '../reducers/actions'
 
 export const OrderContext = createContext({} as IOrderContextType)
 
@@ -17,7 +17,7 @@ export function OrderContextProvider({ children }: IOrderContextProviderProps) {
   }
 
   return (
-    <OrderContext.Provider value={{ addCoffeeToCart }}>
+    <OrderContext.Provider value={{ coffeeListOrder, addCoffeeToCart }}>
       {children}
     </OrderContext.Provider>
   )

@@ -1,3 +1,8 @@
+import { useContext } from 'react'
+import { ProductQuantity } from '../../../../components/ProductQuantity'
+import { Trash } from '@phosphor-icons/react'
+import { NavLink } from 'react-router-dom'
+import { OrderContext } from '../../../../contexts/OrderContext'
 import {
   BoughtCoffeContent,
   ConfirmButton,
@@ -5,33 +10,40 @@ import {
   SelectedCoffeeContent,
   TotalPriceContent,
 } from './style'
-import coffee from '../../../../assets/chocolate-quente.svg'
-import { ProductQuantity } from '../../../../components/ProductQuantity'
-import { Trash } from '@phosphor-icons/react'
-import { NavLink } from 'react-router-dom'
 
 export function SelectedCoffee() {
+  const { coffeeListOrder } = useContext(OrderContext)
+
   return (
     <SelectedCoffeeContainer>
       <h6>Cafés selecionados</h6>
       <SelectedCoffeeContent>
-        <BoughtCoffeContent>
-          <div>
-            <img src={coffee} alt="" />
-            <div>
-              <p>Expresso Tradicional</p>
+        {coffeeListOrder.map((coffee) => (
+          <>
+            <BoughtCoffeContent key={coffee.id}>
               <div>
-                <ProductQuantity />
-                <button className="remove-button">
-                  <Trash size="16" color="#8047f8" />
-                  REMOVER
-                </button>
+                <img src={coffee.thumbnail} alt="" />
+                <div>
+                  <p>{coffee.name}</p>
+                  <div>
+                    <ProductQuantity coffeeQuantity={coffee.quantity} />
+                    <button className="remove-button">
+                      <Trash size="16" color="#8047f8" />
+                      REMOVER
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <span>R$ 9,90</span>
-        </BoughtCoffeContent>
-        <hr />
+              <span>
+                {`R$ ${(coffee.price * coffee.quantity)
+                  .toFixed(2)
+                  .replace('.', ',')}`}
+              </span>
+            </BoughtCoffeContent>
+            <hr />
+          </>
+        ))}
+
         <TotalPriceContent>
           <div>
             <span>Total de itens</span>

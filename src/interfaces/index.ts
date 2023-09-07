@@ -9,6 +9,7 @@ export interface IDataCoffeeCart {
 }
 
 export interface IOrderContextType {
+  coffeeListOrder: IDataCoffeeCart[]
   addCoffeeToCart: (newCoffee: IDataCoffeeCart) => void
 }
 

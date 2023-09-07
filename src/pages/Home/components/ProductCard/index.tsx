@@ -4,11 +4,11 @@ import { ProductCardContainer } from './styles'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
 import { IDataCoffee, IDataCoffeeCart } from '../../../../interfaces'
 import { coffeeQuantityReducer } from '../../../../reducers/coffeeQuantity'
+import { OrderContext } from '../../../../contexts/OrderContext'
 import {
   addOneMoreCoffeeAction,
   removeOneMoreCoffeeAction,
 } from '../../../../reducers/actions'
-import { OrderContext } from '../../../../contexts/OrderContext'
 
 export function ProductCard(coffee: IDataCoffee) {
   const { addCoffeeToCart } = useContext(OrderContext)

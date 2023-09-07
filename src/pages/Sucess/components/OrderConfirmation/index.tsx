@@ -1,10 +1,10 @@
+import deliveryMan from '../../../../assets/delivery-man.svg'
+import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import {
   OrderConfirmationContainer,
   OrderConfirmationContent,
   OrderDetails,
 } from './style'
-import deliveryMan from '../../../../assets/delivery-man.svg'
-import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 
 export function OrderConfirmation() {
   return (
