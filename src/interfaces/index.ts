@@ -11,6 +11,7 @@ export interface IDataCoffeeCart {
 export interface IOrderContextType {
   coffeeListOrder: IDataCoffeeCart[]
   addCoffeeToCart: (newCoffee: IDataCoffeeCart) => void
+  removeCoffeeFromCart: (coffeeToRemove: IDataCoffeeCart) => void
 }
 
 export interface IOrderContextProviderProps {
@@ -39,6 +40,6 @@ export interface ICoffeeQuantityAction {
 export interface ICoffeeListOrderAction {
   type: string
   payload: {
-    newCoffee: IDataCoffeeCart
+    dataCoffee: IDataCoffeeCart
   }
 }

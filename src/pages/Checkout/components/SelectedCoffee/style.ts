@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const SelectedCoffeeContainer = styled.div`
   width: 28rem;
+  margin-bottom: 2rem;
 
   & > h6 {
     font-family: 'Baloo 2', sans-serif;

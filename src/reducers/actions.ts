@@ -19,11 +19,20 @@ export function removeOneMoreCoffeeAction() {
   }
 }
 
-export function addCoffeeToCartAction(newCoffee: IDataCoffeeCart) {
+export function addCoffeeToCartAction(dataCoffee: IDataCoffeeCart) {
   return {
     type: ActionTypes.ADD_COFFEE_TO_CART,
     payload: {
-      newCoffee,
+      dataCoffee,
+    },
+  }
+}
+
+export function removeCoffeeFromCartAction(dataCoffee: IDataCoffeeCart) {
+  return {
+    type: ActionTypes.REMOVE_COFFEE_FROM_CART,
+    payload: {
+      dataCoffee,
     },
   }
 }

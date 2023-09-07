@@ -12,7 +12,7 @@ import {
 } from './style'
 
 export function SelectedCoffee() {
-  const { coffeeListOrder } = useContext(OrderContext)
+  const { coffeeListOrder, removeCoffeeFromCart } = useContext(OrderContext)
 
   return (
     <SelectedCoffeeContainer>
@@ -27,7 +27,10 @@ export function SelectedCoffee() {
                   <p>{coffee.name}</p>
                   <div>
                     <ProductQuantity coffeeQuantity={coffee.quantity} />
-                    <button className="remove-button">
+                    <button
+                      className="remove-button"
+                      onClick={() => removeCoffeeFromCart(coffee)}
+                    >
                       <Trash size="16" color="#8047f8" />
                       REMOVER
                     </button>
