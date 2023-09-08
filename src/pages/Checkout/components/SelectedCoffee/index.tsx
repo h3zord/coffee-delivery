@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ProductQuantity } from '../../../../components/ProductQuantity'
 import { Trash } from '@phosphor-icons/react'
 import { NavLink } from 'react-router-dom'
@@ -18,6 +18,16 @@ export function SelectedCoffee() {
     addOneMoreCoffeeFromOrder,
     removeOneMoreCoffeeFromOrder,
   } = useContext(OrderContext)
+
+  const [totalPrice, setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    const sumTotalPrice = coffeeListOrder.reduce((acc, curr) => {
+      return (acc += curr.quantity * curr.price)
+    }, 0)
+
+    setTotalPrice(sumTotalPrice)
+  }, [coffeeListOrder, setTotalPrice])
 
   return (
     <SelectedCoffeeContainer>
@@ -61,7 +71,7 @@ export function SelectedCoffee() {
         <TotalPriceContent>
           <div>
             <span>Total de itens</span>
-            <span>R$ 29,70</span>
+            <span>{`R$ ${totalPrice.toFixed(2).replace('.', ',')}`}</span>
           </div>
           <div>
             <span>Entrega</span>
@@ -69,7 +79,7 @@ export function SelectedCoffee() {
           </div>
           <div>
             <span>Total</span>
-            <span>R$ 33,20</span>
+            <p>{`R$ ${(totalPrice + 3.5).toFixed(2).replace('.', ',')}`}</p>
           </div>
         </TotalPriceContent>
         <NavLink to={'/sucess'}>
