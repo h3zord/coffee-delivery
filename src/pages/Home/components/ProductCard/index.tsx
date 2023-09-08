@@ -11,11 +11,16 @@ import {
 } from '../../../../reducers/actions'
 
 export function ProductCard(coffee: IDataCoffee) {
-  const { addCoffeeToCart } = useContext(OrderContext)
+  const { addCoffeeToCart, coffeeListOrder } = useContext(OrderContext)
 
   const [dataCoffeeToAdd, setDataCoffeeToAdd] = useState({} as IDataCoffeeCart)
 
-  const [coffeeQuantity, dispatch] = useReducer(coffeeQuantityReducer, 0)
+  const findCoffee = coffeeListOrder.find(({ id }) => id === coffee.id)
+
+  const [coffeeQuantity, dispatch] = useReducer(
+    coffeeQuantityReducer,
+    findCoffee ? findCoffee.quantity : 0,
+  )
 
   useEffect(() => {
     setDataCoffeeToAdd({
