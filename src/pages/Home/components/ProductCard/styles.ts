@@ -86,4 +86,8 @@ export const ProductCardContainer = styled.div`
   div:nth-child(5) > button:hover {
     background-color: ${(props) => props.theme.purple};
   }
+
+  div:nth-child(5) > button:disabled {
+    cursor: not-allowed;
+  }
 `

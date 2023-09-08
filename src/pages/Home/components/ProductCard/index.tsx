@@ -5,6 +5,7 @@ import { ShoppingCartSimple } from '@phosphor-icons/react'
 import { IDataCoffee, IDataCoffeeCart } from '../../../../interfaces'
 import { coffeeQuantityReducer } from '../../../../reducers/coffeeQuantity'
 import { OrderContext } from '../../../../contexts/OrderContext'
+import { toast } from 'react-toastify'
 import {
   addOneMoreCoffeeAction,
   removeOneMoreCoffeeAction,
@@ -59,7 +60,13 @@ export function ProductCard(coffee: IDataCoffee) {
             addOneMoreCoffee={addOneMoreCoffee}
             removeOneMoreCoffee={removeOneMoreCoffee}
           />
-          <button onClick={() => addCoffeeToCart(dataCoffeeToAdd)}>
+          <button
+            disabled={!coffeeQuantity}
+            onClick={() => {
+              addCoffeeToCart(dataCoffeeToAdd)
+              toast.success('Café adicionado ao carrinho! ☕')
+            }}
+          >
             <ShoppingCartSimple size={22} weight="fill" />
           </button>
         </div>
