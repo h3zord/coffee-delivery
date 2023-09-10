@@ -9,8 +9,7 @@ export const OrderConfirmationContainer = styled.div`
 `
 
 export const OrderConfirmationContent = styled.div`
-  width: 32.875rem;
-  height: 16.875rem;
+  width: 33rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +20,6 @@ export const OrderConfirmationContent = styled.div`
 `
 
 export const OrderDetails = styled.div`
-  height: 2.625rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -36,8 +34,8 @@ export const OrderDetails = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
     border-radius: 100%;
   }
 `

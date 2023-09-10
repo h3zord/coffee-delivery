@@ -5,8 +5,12 @@ import {
   OrderConfirmationContent,
   OrderDetails,
 } from './style'
+import { useContext } from 'react'
+import { OrderContext } from '../../../../contexts/OrderContext'
 
 export function OrderConfirmation() {
+  const { buyerInfoData } = useContext(OrderContext)
+
   return (
     <OrderConfirmationContainer>
       <OrderConfirmationContent>
@@ -16,7 +20,13 @@ export function OrderConfirmation() {
           </div>
           <p>
             Entrega em <br />
-            <strong>Rua João Daniel Martinelli, 102 - Porto Alegre, RS</strong>
+            <strong>
+              {`${buyerInfoData.rua}, ${buyerInfoData.numero}${
+                buyerInfoData.complemento
+                  ? `. ${buyerInfoData.complemento}`
+                  : ''
+              } - ${buyerInfoData.cidade}, ${buyerInfoData.uf}`}
+            </strong>
           </p>
         </OrderDetails>
         <OrderDetails>

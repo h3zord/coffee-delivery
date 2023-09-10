@@ -4,7 +4,7 @@ import { BuyerInfo } from './components/BuyerInfo'
 import { SelectedCoffee } from './components/SelectedCoffee'
 import { CheckoutContainer, CheckoutContent } from './style'
 import { OrderContext } from '../../contexts/OrderContext'
-import { BuyerInfoContext } from '../../contexts/BuyerInfoContext'
+import { BuyerInfoFormContext } from '../../contexts/BuyerInfoFormContext'
 
 export function Checkout() {
   const { coffeeListOrder } = useContext(OrderContext)
@@ -13,10 +13,10 @@ export function Checkout() {
     <CheckoutContainer>
       <CheckoutContent>
         {coffeeListOrder.length ? (
-          <BuyerInfoContext>
+          <BuyerInfoFormContext>
             <BuyerInfo />
             <SelectedCoffee />
-          </BuyerInfoContext>
+          </BuyerInfoFormContext>
         ) : (
           <EmptyCart />
         )}

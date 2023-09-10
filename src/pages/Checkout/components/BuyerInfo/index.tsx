@@ -1,5 +1,7 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
+import { OrderContext } from '../../../../contexts/OrderContext'
+import { TBuyerInfoData } from '../../../../contexts/BuyerInfoFormContext'
 import {
   OrderInfoContent,
   OrderInfoContainer,
@@ -22,8 +24,10 @@ export function BuyerInfo() {
     getValues,
     setValue,
     resetField,
-    formState: { errors },
-  } = useFormContext()
+    // formState: { errors },
+  } = useFormContext<TBuyerInfoData>()
+
+  const { saveBuyerInfoDataProxy } = useContext(OrderContext)
 
   const changeClassButton = () => {
     const btnList = document.querySelectorAll('.payment-btn')
@@ -40,17 +44,13 @@ export function BuyerInfo() {
     changeClassButton()
   }, [])
 
-  const saveBuyerInfo = (data) => {}
-
-  console.log(errors)
-
   const resetCityAndUFValues = () => {
-    resetField('cidade-input')
-    resetField('uf-input')
+    resetField('cidade')
+    resetField('uf')
   }
 
   const findCityAndUF = async () => {
-    const cep = getValues('cep-input').replace(/\D/g, '')
+    const cep = getValues('cep').replace(/\D/g, '')
     const regex = /\d{5}[-.\s]?\d{3}/
 
     if (regex.test(cep) && cep.length === 8) {
@@ -60,8 +60,8 @@ export function BuyerInfo() {
 
         if (dataLocation.erro) throw new Error('Falha na requisição!')
 
-        setValue('cidade-input', dataLocation.localidade)
-        setValue('uf-input', dataLocation.uf)
+        setValue('cidade', dataLocation.localidade)
+        setValue('uf', dataLocation.uf)
       } catch (error) {
         resetCityAndUFValues()
         console.error(error)
@@ -82,43 +82,30 @@ export function BuyerInfo() {
           <p>Informe o endereço onde deseja receber seu pedido</p>
         </DescriptionContent>
         <FormContent
-          onSubmit={handleSubmit(saveBuyerInfo)}
+          onSubmit={handleSubmit(saveBuyerInfoDataProxy)}
           id="buyer-info-form"
         >
           <input
             type="text"
             placeholder="CEP"
-            {...register('cep-input')}
+            {...register('cep')}
             onBlur={() => findCityAndUF()}
           />
-          <input type="text" placeholder="Rua" {...register('rua-input')} />
-          <input
-            type="text"
-            placeholder="Número"
-            {...register('numero-input')}
-          />
+          <input type="text" placeholder="Rua" {...register('rua')} />
+          <input type="text" placeholder="Número" {...register('numero')} />
           <input
             type="text"
             placeholder="Complemento"
-            {...register('complemento-input')}
+            {...register('complemento')}
           />
-          <input
-            type="text"
-            placeholder="Bairro"
-            {...register('bairro-input')}
-          />
+          <input type="text" placeholder="Bairro" {...register('bairro')} />
           <input
             type="text"
             placeholder="Cidade"
             readOnly
-            {...register('cidade-input')}
+            {...register('cidade')}
           />
-          <input
-            type="text"
-            placeholder="UF"
-            readOnly
-            {...register('uf-input')}
-          />
+          <input type="text" placeholder="UF" readOnly {...register('uf')} />
         </FormContent>
       </OrderInfoContent>
       <OrderInfoContent>

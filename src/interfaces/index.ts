@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { TBuyerInfoData } from '../contexts/BuyerInfoFormContext'
 
 export interface IDataCoffeeCart {
   id: string
@@ -10,12 +11,14 @@ export interface IDataCoffeeCart {
 
 export interface IOrderContextType {
   coffeeListOrder: IDataCoffeeCart[]
+  buyerInfoData: TBuyerInfoData
   addCoffeeToCart: (newCoffee: IDataCoffeeCart) => void
   deleteCoffeeFromCart: (coffeeToDelete: IDataCoffeeCart) => void
   addOneMoreCoffeeFromOrder: (coffeeToIncreaseQuantity: IDataCoffeeCart) => void
   removeOneMoreCoffeeFromOrder: (
     coffeeToDecreaseQuantity: IDataCoffeeCart,
   ) => void
+  saveBuyerInfoDataProxy: (data: TBuyerInfoData) => void
 }
 
 export interface IProviderProps {
