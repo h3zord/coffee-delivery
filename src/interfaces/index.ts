@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { MouseEvent, ReactNode } from 'react'
 import { TBuyerInfoData } from '../contexts/BuyerInfoFormContext'
 
 export interface IDataCoffeeCart {
@@ -9,16 +9,23 @@ export interface IDataCoffeeCart {
   quantity: number
 }
 
+export type TPaymentMethod =
+  | 'Cartão de crédito'
+  | 'Cartão de débito'
+  | 'Dinheiro'
+
 export interface IOrderContextType {
   coffeeListOrder: IDataCoffeeCart[]
   buyerInfoData: TBuyerInfoData
+  paymentMethod: TPaymentMethod
   addCoffeeToCart: (newCoffee: IDataCoffeeCart) => void
   deleteCoffeeFromCart: (coffeeToDelete: IDataCoffeeCart) => void
   addOneMoreCoffeeFromOrder: (coffeeToIncreaseQuantity: IDataCoffeeCart) => void
+  saveBuyerInfoDataProxy: (data: TBuyerInfoData) => void
+  setPaymentMethodProxy: (event: MouseEvent<HTMLButtonElement>) => void
   removeOneMoreCoffeeFromOrder: (
     coffeeToDecreaseQuantity: IDataCoffeeCart,
   ) => void
-  saveBuyerInfoDataProxy: (data: TBuyerInfoData) => void
 }
 
 export interface IProviderProps {

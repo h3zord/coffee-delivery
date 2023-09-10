@@ -9,7 +9,7 @@ import { useContext } from 'react'
 import { OrderContext } from '../../../../contexts/OrderContext'
 
 export function OrderConfirmation() {
-  const { buyerInfoData } = useContext(OrderContext)
+  const { buyerInfoData, paymentMethod } = useContext(OrderContext)
 
   return (
     <OrderConfirmationContainer>
@@ -44,7 +44,7 @@ export function OrderConfirmation() {
           </div>
           <p>
             Pagamento na entrega <br />
-            <strong>Cartão de Crédito</strong>
+            <strong>{paymentMethod}</strong>
           </p>
         </OrderDetails>
       </OrderConfirmationContent>

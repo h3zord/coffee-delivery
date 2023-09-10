@@ -27,7 +27,8 @@ export function BuyerInfo() {
     // formState: { errors },
   } = useFormContext<TBuyerInfoData>()
 
-  const { saveBuyerInfoDataProxy } = useContext(OrderContext)
+  const { saveBuyerInfoDataProxy, setPaymentMethodProxy } =
+    useContext(OrderContext)
 
   const changeClassButton = () => {
     const btnList = document.querySelectorAll('.payment-btn')
@@ -117,15 +118,27 @@ export function BuyerInfo() {
           </p>
         </DescriptionContent>
         <MethodPaymentContent>
-          <button className="payment-btn" value="Cartão de crédito">
+          <button
+            className="payment-btn active"
+            value="Cartão de crédito"
+            onClick={(event) => setPaymentMethodProxy(event)}
+          >
             <CreditCard size="16" color="#8047f8" />
             CARTÃO DE CRÉDITO
           </button>
-          <button className="payment-btn" value="Cartão de débito">
+          <button
+            className="payment-btn"
+            value="Cartão de débito"
+            onClick={(event) => setPaymentMethodProxy(event)}
+          >
             <Bank size="16" color="#8047f8" />
             CARTÃO DE DÉBITO
           </button>
-          <button className="payment-btn" value="Dinheiro">
+          <button
+            className="payment-btn"
+            value="Dinheiro"
+            onClick={(event) => setPaymentMethodProxy(event)}
+          >
             <Money size="16" color="#8047f8" />
             DINHEIRO
           </button>
