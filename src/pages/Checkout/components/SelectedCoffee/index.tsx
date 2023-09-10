@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { ProductQuantity } from '../../../../components/ProductQuantity'
 import { Trash } from '@phosphor-icons/react'
-import { NavLink } from 'react-router-dom'
 import { OrderContext } from '../../../../contexts/OrderContext'
 import {
   BoughtCoffeContent,
@@ -35,7 +34,7 @@ export function SelectedCoffee() {
       <SelectedCoffeeContent>
         {coffeeListOrder.map((coffee) => (
           <>
-            <BoughtCoffeContent key={coffee.id}>
+            <BoughtCoffeContent key={coffee.name}>
               <div>
                 <img src={coffee.thumbnail} alt="" />
                 <div>
@@ -82,9 +81,9 @@ export function SelectedCoffee() {
             <p>{`R$ ${(totalPrice + 3.5).toFixed(2).replace('.', ',')}`}</p>
           </div>
         </TotalPriceContent>
-        <NavLink to={'/sucess'}>
-          <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
-        </NavLink>
+        <ConfirmButton type="submit" form="buyer-info-form">
+          CONFIRMAR PEDIDO
+        </ConfirmButton>
       </SelectedCoffeeContent>
     </SelectedCoffeeContainer>
   )

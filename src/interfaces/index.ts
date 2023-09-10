@@ -18,7 +18,7 @@ export interface IOrderContextType {
   ) => void
 }
 
-export interface IOrderContextProviderProps {
+export interface IProviderProps {
   children: ReactNode
 }
 

@@ -1,9 +1,10 @@
 import { useContext } from 'react'
 import { EmptyCart } from './components/EmptyCart'
-import { OrderInfo } from './components/OrderInfo'
+import { BuyerInfo } from './components/BuyerInfo'
 import { SelectedCoffee } from './components/SelectedCoffee'
 import { CheckoutContainer, CheckoutContent } from './style'
 import { OrderContext } from '../../contexts/OrderContext'
+import { BuyerInfoContext } from '../../contexts/BuyerInfoContext'
 
 export function Checkout() {
   const { coffeeListOrder } = useContext(OrderContext)
@@ -12,10 +13,10 @@ export function Checkout() {
     <CheckoutContainer>
       <CheckoutContent>
         {coffeeListOrder.length ? (
-          <>
-            <OrderInfo />
+          <BuyerInfoContext>
+            <BuyerInfo />
             <SelectedCoffee />
-          </>
+          </BuyerInfoContext>
         ) : (
           <EmptyCart />
         )}

@@ -8,13 +8,13 @@ import {
 } from '../reducers/actions'
 import {
   IDataCoffeeCart,
-  IOrderContextProviderProps,
+  IProviderProps,
   IOrderContextType,
 } from '../interfaces'
 
 export const OrderContext = createContext({} as IOrderContextType)
 
-export function OrderContextProvider({ children }: IOrderContextProviderProps) {
+export function OrderContextProvider({ children }: IProviderProps) {
   const [coffeeListOrder, dispatch] = useReducer(coffeeListOrderReducer, [])
 
   const addCoffeeToCart = (newCoffee: IDataCoffeeCart) => {

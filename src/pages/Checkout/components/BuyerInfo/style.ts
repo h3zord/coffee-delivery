@@ -117,7 +117,7 @@ export const MethodPaymentContent = styled.div`
   justify-content: space-between;
   width: 35rem;
 
-  & > div {
+  & > button {
     border: none;
     border-radius: 6px;
     display: flex;
@@ -136,7 +136,7 @@ export const MethodPaymentContent = styled.div`
     cursor: pointer;
   }
 
-  & > div:hover:not(.active) {
+  & > button:hover:not(.active) {
     background-color: ${(props) => props.theme['base-hover']};
     color: ${(props) => props.theme['base-subtitle']};
   }
