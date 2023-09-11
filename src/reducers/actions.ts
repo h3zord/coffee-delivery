@@ -1,4 +1,4 @@
-import { IDataCoffeeCart } from '../interfaces'
+import { IDataCoffeeCart } from '../interfacesAndTypes'
 
 export enum ActionTypes {
   ADD_ONE_MORE_COFFEE = 'ADD_ONE_MORE_COFFEE',

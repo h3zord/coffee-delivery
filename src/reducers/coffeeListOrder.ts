@@ -1,4 +1,4 @@
-import { ICoffeeListOrderAction, IDataCoffeeCart } from '../interfaces'
+import { ICoffeeListOrderAction, IDataCoffeeCart } from '../interfacesAndTypes'
 import { ActionTypes } from './actions'
 import { produce } from 'immer'
 

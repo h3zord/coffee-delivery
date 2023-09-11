@@ -1,4 +1,4 @@
-import { ICoffeeQuantityAction } from '../interfaces'
+import { ICoffeeQuantityAction } from '../interfacesAndTypes'
 import { ActionTypes } from './actions'
 
 export function coffeeQuantityReducer(

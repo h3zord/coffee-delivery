@@ -7,19 +7,29 @@ export const EmptyCartContainer = styled.div`
   flex-direction: column;
   width: 100%;
 
-  & > img {
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    border-radius: 6px;
+    background-color: ${(props) => props.theme['base-card']};
+  }
+
+  & > div img {
     width: 260px;
     margin-top: 3rem;
     margin-bottom: 3rem;
   }
 
-  & > h1 {
+  & > div > h1 {
     font-size: 2rem;
     line-height: 1.3;
     color: ${(props) => props.theme['purple-dark']};
     font-family: 'Baloo 2', sans-serif;
     font-weight: 800;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
   }
 `
 
@@ -34,6 +44,9 @@ export const BackToHome = styled.button`
   cursor: pointer;
   transition: 0.1s;
   font-weight: 700;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+
   background-color: ${(props) => props.theme.purple};
   color: ${(props) => props.theme.white};
 

@@ -24,7 +24,7 @@ export function BuyerInfo() {
     getValues,
     setValue,
     resetField,
-    // formState: { errors },
+    formState: { errors },
   } = useFormContext<TBuyerInfoData>()
 
   const { saveBuyerInfoDataProxy, setPaymentMethodProxy } =
@@ -85,6 +85,14 @@ export function BuyerInfo() {
         <FormContent
           onSubmit={handleSubmit(saveBuyerInfoDataProxy)}
           id="buyer-info-form"
+          hasError={{
+            cidade: Boolean(errors.cidade),
+            uf: Boolean(errors.uf),
+            rua: Boolean(errors.rua),
+            numero: Boolean(errors.numero),
+            bairro: Boolean(errors.bairro),
+            cep: Boolean(errors.cep),
+          }}
         >
           <input
             type="text"

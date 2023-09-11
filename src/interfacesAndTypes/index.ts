@@ -63,3 +63,14 @@ export interface ICoffeeListOrderAction {
     dataCoffee: IDataCoffeeCart
   }
 }
+
+export type TFormProps = {
+  hasError: {
+    cidade: boolean
+    uf: boolean
+    rua: boolean
+    numero: boolean
+    bairro: boolean
+    cep: boolean
+  }
+}

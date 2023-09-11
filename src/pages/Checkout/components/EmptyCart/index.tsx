@@ -5,11 +5,13 @@ import { NavLink } from 'react-router-dom'
 export function EmptyCart() {
   return (
     <EmptyCartContainer>
-      <h1>Seu carrinho está vazio!</h1>
-      <img src={emptyCart} alt="" />
-      <NavLink to={'/'}>
-        <BackToHome>ESCOLHER MEU CAFÉ</BackToHome>
-      </NavLink>
+      <div>
+        <img src={emptyCart} alt="" />
+        <h1>Seu carrinho está vazio!</h1>
+        <NavLink to={'/'}>
+          <BackToHome>ESCOLHER MEU CAFÉ</BackToHome>
+        </NavLink>
+      </div>
     </EmptyCartContainer>
   )
 }

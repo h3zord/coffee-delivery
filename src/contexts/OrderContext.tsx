@@ -14,7 +14,7 @@ import {
   IProviderProps,
   IOrderContextType,
   TPaymentMethod,
-} from '../interfaces'
+} from '../interfacesAndTypes'
 
 export const OrderContext = createContext({} as IOrderContextType)
 

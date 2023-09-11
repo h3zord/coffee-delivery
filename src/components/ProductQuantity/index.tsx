@@ -1,4 +1,4 @@
-import { IProductQuantityProps } from '../../interfaces'
+import { IProductQuantityProps } from '../../interfacesAndTypes'
 import { ProductQuantityContainer } from './style'
 import { Plus, Minus } from '@phosphor-icons/react'
 

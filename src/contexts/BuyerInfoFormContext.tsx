@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form'
-import { IProviderProps } from '../interfaces'
+import { IProviderProps } from '../interfacesAndTypes'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 
@@ -16,7 +16,8 @@ const buyerInfoValidationSchema = zod.object({
     .max(9, 'Este formato de CEP é inválido')
     .regex(/\d{5}[-.\s]?\d{3}/, {
       message: 'Este formato de CEP é inválido',
-    }),
+    })
+    .refine((val) => val.replace(/\D/g, '')),
 })
 
 export type TBuyerInfoData = zod.infer<typeof buyerInfoValidationSchema>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { TFormProps } from '../../../../interfacesAndTypes'
 
 export const OrderInfoContainer = styled.div`
   width: 40rem;
@@ -47,7 +48,7 @@ export const DescriptionContent = styled.div`
   }
 `
 
-export const FormContent = styled.form`
+export const FormContent = styled.form<TFormProps>`
   display: grid;
   grid-gap: 0.75rem;
   grid-template-columns: 12.5rem 17.25rem 3.75rem;
@@ -58,15 +59,19 @@ export const FormContent = styled.form`
     height: 2.625rem;
     border-radius: 4px;
     background-color: ${(props) => props.theme['base-input']};
-    border: none;
     color: ${(props) => props.theme['base-text']};
+    border: 1px solid transparent;
     padding: 12px;
     font-size: 0.875rem;
     line-height: 1.3;
   }
 
   input:focus {
-    box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
+    box-shadow: 0 0 0 2px
+      ${(props) =>
+        Object.values(props.hasError).includes(true)
+          ? 'transparent'
+          : props.theme['yellow-dark']};
   }
 
   input::placeholder {
@@ -79,16 +84,20 @@ export const FormContent = styled.form`
   input:nth-child(1) {
     grid-column: 1;
     grid-row: 1;
+    border: 1px solid ${(props) => (props.hasError.cep ? 'red' : 'transparent')};
   }
 
   input:nth-child(2) {
     grid-column: span 3;
     grid-row: 2;
+    border: 1px solid ${(props) => (props.hasError.rua ? 'red' : 'transparent')};
   }
 
   input:nth-child(3) {
     grid-column: 1;
     grid-row: 3;
+    border: 1px solid
+      ${(props) => (props.hasError.numero ? 'red' : 'transparent')};
   }
 
   input:nth-child(4) {
@@ -99,16 +108,21 @@ export const FormContent = styled.form`
   input:nth-child(5) {
     grid-column: 1;
     grid-row: 4;
+    border: 1px solid
+      ${(props) => (props.hasError.bairro ? 'red' : 'transparent')};
   }
 
   input:nth-child(6) {
     grid-column: 2;
     grid-row: 4;
+    border: 1px solid
+      ${(props) => (props.hasError.cidade ? 'red' : 'transparent')};
   }
 
   input:nth-child(7) {
     grid-column: 3;
     grid-row: 4;
+    border: 1px solid ${(props) => (props.hasError.uf ? 'red' : 'transparent')};
   }
 `
 
