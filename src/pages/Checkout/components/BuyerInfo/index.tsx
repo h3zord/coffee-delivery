@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { useFormContext } from 'react-hook-form'
+import { SubmitHandler, useFormContext } from 'react-hook-form'
 import { OrderContext } from '../../../../contexts/OrderContext'
 import { TBuyerInfoData } from '../../../../contexts/BuyerInfoFormContext'
 import {
@@ -16,6 +16,7 @@ import {
   MapPinLine,
   Money,
 } from '@phosphor-icons/react'
+import { useNavigate } from 'react-router-dom'
 
 export function BuyerInfo() {
   const {
@@ -27,8 +28,10 @@ export function BuyerInfo() {
     formState: { errors },
   } = useFormContext<TBuyerInfoData>()
 
-  const { saveBuyerInfoDataProxy, setPaymentMethodProxy } =
+  const { setPaymentMethodProxy, saveBuyerInfoDataProxy, resetCart } =
     useContext(OrderContext)
+
+  const navigate = useNavigate()
 
   const changeClassButton = () => {
     const btnList = document.querySelectorAll('.payment-btn')
@@ -73,6 +76,12 @@ export function BuyerInfo() {
     }
   }
 
+  const saveBuyerInfoData: SubmitHandler<TBuyerInfoData> = (data) => {
+    saveBuyerInfoDataProxy(data)
+    navigate('/sucess')
+    resetCart()
+  }
+
   return (
     <OrderInfoContainer>
       <h6>Complete seu pedido</h6>
@@ -83,9 +92,9 @@ export function BuyerInfo() {
           <p>Informe o endereço onde deseja receber seu pedido</p>
         </DescriptionContent>
         <FormContent
-          onSubmit={handleSubmit(saveBuyerInfoDataProxy)}
+          onSubmit={handleSubmit(saveBuyerInfoData)}
           id="buyer-info-form"
-          hasError={{
+          $hasTypeError={{
             cidade: Boolean(errors.cidade),
             uf: Boolean(errors.uf),
             rua: Boolean(errors.rua),

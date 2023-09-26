@@ -46,11 +46,11 @@ export const HeaderContainer = styled.header`
 
   .counter-coffee {
     position: absolute;
-    border-radius: 50px;
+    border-radius: 100%;
     font-family: 'Roboto', sans-serif;
     line-height: 1.3;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.3rem;
+    height: 1.3rem;
     display: flex;
     align-items: center;
     justify-content: center;

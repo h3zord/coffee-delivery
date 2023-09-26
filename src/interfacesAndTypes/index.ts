@@ -23,6 +23,7 @@ export interface IOrderContextType {
   addOneMoreCoffeeFromOrder: (coffeeToIncreaseQuantity: IDataCoffeeCart) => void
   saveBuyerInfoDataProxy: (data: TBuyerInfoData) => void
   setPaymentMethodProxy: (event: MouseEvent<HTMLButtonElement>) => void
+  resetCart: () => void
   removeOneMoreCoffeeFromOrder: (
     coffeeToDecreaseQuantity: IDataCoffeeCart,
   ) => void
@@ -59,13 +60,13 @@ export interface ICoffeeQuantityAction {
 
 export interface ICoffeeListOrderAction {
   type: string
-  payload: {
+  payload?: {
     dataCoffee: IDataCoffeeCart
   }
 }
 
 export type TFormProps = {
-  hasError: {
+  $hasTypeError: {
     cidade: boolean
     uf: boolean
     rua: boolean

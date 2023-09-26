@@ -33,8 +33,8 @@ export function SelectedCoffee() {
       <h6>Cafés selecionados</h6>
       <SelectedCoffeeContent>
         {coffeeListOrder.map((coffee) => (
-          <>
-            <BoughtCoffeContent key={coffee.name}>
+          <div key={coffee.id}>
+            <BoughtCoffeContent>
               <div>
                 <img src={coffee.thumbnail} alt="" />
                 <div>
@@ -64,7 +64,7 @@ export function SelectedCoffee() {
               </span>
             </BoughtCoffeContent>
             <hr />
-          </>
+          </div>
         ))}
 
         <TotalPriceContent>

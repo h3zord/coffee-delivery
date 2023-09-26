@@ -7,6 +7,7 @@ export enum ActionTypes {
   REMOVE_ONE_MORE_COFFEE_FROM_ORDER = 'REMOVE_ONE_MORE_COFFEE_FROM_ORDER',
   ADD_COFFEE_TO_CART = 'ADD_COFFEE_TO_CART',
   DELETE_COFFEE_FROM_CART = 'DELETE_COFFEE_FROM_CART',
+  RESET_CART = 'RESET_CART',
 }
 
 export function addOneMoreCoffeeAction() {
@@ -56,5 +57,11 @@ export function removeOneMoreCoffeeFromOrderAction(
     payload: {
       dataCoffee,
     },
+  }
+}
+
+export function resetCartAction() {
+  return {
+    type: ActionTypes.RESET_CART,
   }
 }

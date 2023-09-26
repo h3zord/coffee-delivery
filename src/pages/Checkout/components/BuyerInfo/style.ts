@@ -69,7 +69,7 @@ export const FormContent = styled.form<TFormProps>`
   input:focus {
     box-shadow: 0 0 0 2px
       ${(props) =>
-        Object.values(props.hasError).includes(true)
+        Object.values(props.$hasTypeError).includes(true)
           ? 'transparent'
           : props.theme['yellow-dark']};
   }
@@ -84,20 +84,22 @@ export const FormContent = styled.form<TFormProps>`
   input:nth-child(1) {
     grid-column: 1;
     grid-row: 1;
-    border: 1px solid ${(props) => (props.hasError.cep ? 'red' : 'transparent')};
+    border: 1px solid
+      ${(props) => (props.$hasTypeError.cep ? 'red' : 'transparent')};
   }
 
   input:nth-child(2) {
     grid-column: span 3;
     grid-row: 2;
-    border: 1px solid ${(props) => (props.hasError.rua ? 'red' : 'transparent')};
+    border: 1px solid
+      ${(props) => (props.$hasTypeError.rua ? 'red' : 'transparent')};
   }
 
   input:nth-child(3) {
     grid-column: 1;
     grid-row: 3;
     border: 1px solid
-      ${(props) => (props.hasError.numero ? 'red' : 'transparent')};
+      ${(props) => (props.$hasTypeError.numero ? 'red' : 'transparent')};
   }
 
   input:nth-child(4) {
@@ -109,20 +111,21 @@ export const FormContent = styled.form<TFormProps>`
     grid-column: 1;
     grid-row: 4;
     border: 1px solid
-      ${(props) => (props.hasError.bairro ? 'red' : 'transparent')};
+      ${(props) => (props.$hasTypeError.bairro ? 'red' : 'transparent')};
   }
 
   input:nth-child(6) {
     grid-column: 2;
     grid-row: 4;
     border: 1px solid
-      ${(props) => (props.hasError.cidade ? 'red' : 'transparent')};
+      ${(props) => (props.$hasTypeError.cidade ? 'red' : 'transparent')};
   }
 
   input:nth-child(7) {
     grid-column: 3;
     grid-row: 4;
-    border: 1px solid ${(props) => (props.hasError.uf ? 'red' : 'transparent')};
+    border: 1px solid
+      ${(props) => (props.$hasTypeError.uf ? 'red' : 'transparent')};
   }
 `
 

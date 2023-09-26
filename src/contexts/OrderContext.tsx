@@ -1,13 +1,12 @@
 import { MouseEvent, createContext, useReducer, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { coffeeListOrderReducer } from '../reducers/coffeeListOrder'
 import { TBuyerInfoData } from './BuyerInfoFormContext'
-import { SubmitHandler } from 'react-hook-form'
 import {
   addCoffeeToCartAction,
   addOneMoreCoffeeFromOrderAction,
   deleteCoffeeFromCartAction,
   removeOneMoreCoffeeFromOrderAction,
+  resetCartAction,
 } from '../reducers/actions'
 import {
   IDataCoffeeCart,
@@ -25,8 +24,6 @@ export function OrderContextProvider({ children }: IProviderProps) {
 
   const [paymentMethod, setPaymentMethod] =
     useState<TPaymentMethod>('Cartão de crédito')
-
-  const navigate = useNavigate()
 
   const addCoffeeToCart = (newCoffee: IDataCoffeeCart) => {
     dispatch(addCoffeeToCartAction(newCoffee))
@@ -48,16 +45,16 @@ export function OrderContextProvider({ children }: IProviderProps) {
     dispatch(removeOneMoreCoffeeFromOrderAction(coffeeToDecreaseQuantity))
   }
 
-  const saveBuyerInfoDataProxy: SubmitHandler<TBuyerInfoData> = (data) => {
-    setBuyerInfoData(data)
-    navigate('/sucess')
-  }
-
   const setPaymentMethodProxy = (event: MouseEvent<HTMLButtonElement>) => {
-    const value = event.currentTarget.value
+    const value = event.currentTarget.value as TPaymentMethod
 
-    setPaymentMethod(value as TPaymentMethod)
+    setPaymentMethod(value)
   }
+
+  const saveBuyerInfoDataProxy = (data: TBuyerInfoData) =>
+    setBuyerInfoData(data)
+
+  const resetCart = () => dispatch(resetCartAction())
 
   return (
     <OrderContext.Provider
@@ -71,6 +68,7 @@ export function OrderContextProvider({ children }: IProviderProps) {
         removeOneMoreCoffeeFromOrder,
         saveBuyerInfoDataProxy,
         setPaymentMethodProxy,
+        resetCart,
       }}
     >
       {children}

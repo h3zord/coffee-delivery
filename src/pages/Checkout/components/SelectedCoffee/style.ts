@@ -19,7 +19,7 @@ export const SelectedCoffeeContent = styled.div`
   border-radius: 6px 44px 6px 44px;
   background-color: ${(props) => props.theme['base-card']};
 
-  hr {
+  & > div > hr {
     margin: 1.5rem 0px;
     border: 1.5px solid ${(props) => props.theme['base-button']};
   }
