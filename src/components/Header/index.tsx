@@ -8,17 +8,20 @@ import { OrderContext } from '../../contexts/OrderContext'
 export function Header() {
   const { coffeeListOrder } = useContext(OrderContext)
 
-  const coffeeQuantity = coffeeListOrder.reduce((acc, curr) => {
-    return (acc += curr.quantity)
-  }, 0)
+  const coffeeQuantity = coffeeListOrder.reduce(
+    (acc, curr) => (acc += curr.quantity),
+    0,
+  )
 
   return (
     <HeaderContainer>
       <Link to="/">
-        <img src={coffeeDeliveryLogo} alt="" />
+        <img src={coffeeDeliveryLogo} alt="" data-testid="logo-image" />
       </Link>
       <div>
-        <span>{<MapPin size={22} weight="fill" />} Porto Alegre, RS</span>
+        <span data-testid="location">
+          {<MapPin size={22} weight="fill" />} Porto Alegre, RS
+        </span>
 
         <nav>
           <NavLink to={'/checkout'} title="Redirect to checkout">

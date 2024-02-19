@@ -2,7 +2,7 @@ import { MouseEvent, ReactNode } from 'react'
 import { TBuyerInfoData } from '../contexts/BuyerInfoFormContext'
 
 export interface IDataCoffeeCart {
-  id: string
+  id: number
   name: string
   price: number
   thumbnail: string
@@ -34,7 +34,7 @@ export interface IProviderProps {
 }
 
 export interface IDataCoffee {
-  id: string
+  id: number
   name: string
   description: string
   price: number

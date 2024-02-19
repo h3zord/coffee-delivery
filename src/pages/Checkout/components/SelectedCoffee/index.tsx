@@ -29,7 +29,7 @@ export function SelectedCoffee() {
   }, [coffeeListOrder, setTotalPrice])
 
   return (
-    <SelectedCoffeeContainer>
+    <SelectedCoffeeContainer data-testid="selected-coffee">
       <h6>Cafés selecionados</h6>
       <SelectedCoffeeContent>
         {coffeeListOrder.map((coffee) => (

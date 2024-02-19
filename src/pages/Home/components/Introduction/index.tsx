@@ -8,7 +8,7 @@ import coffeeIcon from '../../../../assets/coffee-icon.svg'
 export function Introduction() {
   return (
     <>
-      <IntroductionText>
+      <IntroductionText data-testid="introduction-text">
         <div>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>
           <h4>
@@ -32,7 +32,7 @@ export function Introduction() {
           </span>
         </div>
       </IntroductionText>
-      <img src={introduction} alt="" />
+      <img src={introduction} alt="introduction-coffee-image" />
     </>
   )
 }

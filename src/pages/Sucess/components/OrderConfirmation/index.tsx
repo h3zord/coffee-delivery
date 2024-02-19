@@ -1,12 +1,12 @@
 import deliveryMan from '../../../../assets/delivery-man.svg'
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
+import { useContext } from 'react'
+import { OrderContext } from '../../../../contexts/OrderContext'
 import {
   OrderConfirmationContainer,
   OrderConfirmationContent,
   OrderDetails,
 } from './style'
-import { useContext } from 'react'
-import { OrderContext } from '../../../../contexts/OrderContext'
 
 export function OrderConfirmation() {
   const { buyerInfoData, paymentMethod } = useContext(OrderContext)

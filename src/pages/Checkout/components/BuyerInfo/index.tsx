@@ -83,7 +83,7 @@ export function BuyerInfo() {
   }
 
   return (
-    <OrderInfoContainer>
+    <OrderInfoContainer data-testid="buyer-info">
       <h6>Complete seu pedido</h6>
       <OrderInfoContent>
         <DescriptionContent>
@@ -134,7 +134,7 @@ export function BuyerInfo() {
             O pagamento é feito na entrega. Escolha a forma que deseja pagar
           </p>
         </DescriptionContent>
-        <MethodPaymentContent>
+        <MethodPaymentContent data-testid="method-payment">
           <button
             className="payment-btn active"
             value="Cartão de crédito"

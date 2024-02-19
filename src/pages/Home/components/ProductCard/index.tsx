@@ -43,7 +43,7 @@ export function ProductCard(coffee: IDataCoffee) {
 
   return (
     <>
-      <ProductCardContainer key={coffee.id}>
+      <ProductCardContainer key={coffee.id} data-testid="coffee-card">
         <img src={coffee.thumbnail} alt="" />
         <div>
           {coffee.tags.map((tag) => (
@@ -61,6 +61,7 @@ export function ProductCard(coffee: IDataCoffee) {
             removeOneMoreCoffee={removeOneMoreCoffee}
           />
           <button
+            data-testid="add-to-cart"
             disabled={!coffeeQuantity}
             onClick={() => {
               addCoffeeToCart(dataCoffeeToAdd)
