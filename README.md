@@ -1,27 +1,74 @@
-# React + TypeScript + Vite
+<h1 align="center">Boas-vindas ao repositório do Coffee Delivery!</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## O que foi desenvolvido?
 
-Currently, two official plugins are available:
+O <strong>Coffee Delivery</strong> é uma aplicação que simula a comercialização de cafés, onde existe uma página principal com todos os cafés disponíveis para a compra,
+uma página de checkout onde o cliente preenche com seus dados, como endereço residêncial e forma de pagamento, conta também com a opção de adicionar ou remover mais itens ao
+seu carrinho, e por fim caso a compra seja realizada, há uma página de sucesso, mostrando informações sobre a entrega do produto.
+A aplicação foi desenvolvida com react e typescript, zod para validar informações do formulário e json server para simular requisições. A estilização foi realizada com a ferramenta styled-components. Foram feitos testes E2E com a bibilioteca
+Cypress, verificando se os elementos estão presentes em tela, e conferindo se a requisição que busca todos os cafés se comporta de maneira adequada. Todos os testes estão presentes na pasta
+<strong>cypress/e2e</strong>.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Linguagens e ferramentas
 
-## Expanding the ESLint configuration
+- Vite
+- React
+- Typescript
+- Styled Components
+- Zod
+- Json Server
+- Eslint
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalação e execução
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+### 1 - Clone o repositório:
+```
+git clone git@github.com:h3zord/coffee-delivery.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 2 - Entre no repositório
+```
+cd coffee-delivery
+```
+
+### 3 - Instale as dependências:
+Caso utilize o npm
+```
+npm install
+```
+Caso utilize o yarn
+```
+yarn install
+```
+
+### 4 - Inicie o json server:
+Caso utilize o npm
+```
+npm run dev:server
+```
+Caso utilize o yarn
+```
+yarn run dev:server
+```
+
+
+### 5 - Inicie o projeto:
+#### ➜ Abra outro terminal
+
+Caso utilize o npm
+```
+npm run dev
+```
+Caso utilize o yarn
+```
+yarn run dev
+```
+
+<strong>O react irá executar a aplicação na porta padrão 5173.</strong>
+<br/>
+➜ http://localhost:5173/
+<br/>
+<br/>
+<strong>O json server irá executar na porta 3333. O endpoint é "coffees".</strong>
+<br/>
+➜ http://localhost:3333/coffees
