@@ -1,4 +1,4 @@
-<h1 align="center">Boas-vindas ao repositório do Coffee Delivery!</h1>
+<h1 align="center">Boas-vindas ao repositório do Coffee Delivery! ☕ </h1>
 
 ## O que foi desenvolvido?
 
