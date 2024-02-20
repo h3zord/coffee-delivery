@@ -65,6 +65,16 @@ Caso utilize o yarn
 yarn run dev
 ```
 
+### 6 - Rodando os testes:
+Caso utilize o npm
+```
+npm run cy:run
+```
+Caso utilize o yarn
+```
+yarn run cy:run
+```
+
 <strong>O vite irá executar a aplicação na porta padrão 5173.</strong>
 <br/>
 ➜ http://localhost:5173/
