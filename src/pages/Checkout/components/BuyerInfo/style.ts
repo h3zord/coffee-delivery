@@ -117,15 +117,25 @@ export const FormContent = styled.form<TFormProps>`
   input:nth-child(6) {
     grid-column: 2;
     grid-row: 4;
+    cursor: not-allowed;
     border: 1px solid
       ${(props) => (props.$hasTypeError.cidade ? 'red' : 'transparent')};
+  }
+
+  input:nth-child(6):focus {
+    box-shadow: 0 0 0 2px transparent;
   }
 
   input:nth-child(7) {
     grid-column: 3;
     grid-row: 4;
+    cursor: not-allowed;
     border: 1px solid
       ${(props) => (props.$hasTypeError.uf ? 'red' : 'transparent')};
+  }
+
+  input:nth-child(7):focus {
+    box-shadow: 0 0 0 2px transparent;
   }
 `
 

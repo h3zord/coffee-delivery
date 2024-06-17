@@ -14,7 +14,7 @@ describe('Sucess page tests', () => {
 
       cy.get('#buyer-info-form > input').should('have.length', 7)
 
-      cy.get('#buyer-info-form > input').eq(0).type('85200000')
+      cy.get('#buyer-info-form > input').eq(0).type('01001-000')
       cy.get('#buyer-info-form > input').eq(1).type('Rua fake')
       cy.get('#buyer-info-form > input').eq(2).type('000')
       cy.get('#buyer-info-form > input').eq(3).type('Centro')
@@ -27,7 +27,7 @@ describe('Sucess page tests', () => {
       })
 
       cy.get('h1').contains('Uhu! Pedido confirmado!')
-      cy.get('strong').contains('Rua fake, 000. Centro - Pitanga, PR')
+      cy.get('strong').contains('Rua fake, 000. Centro - São Paulo, SP')
       cy.get('img').should('be.visible')
     })
   })

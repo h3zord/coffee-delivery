@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { SubmitHandler, useFormContext } from 'react-hook-form'
 import { OrderContext } from '../../../../contexts/OrderContext'
 import { TBuyerInfoData } from '../../../../contexts/BuyerInfoFormContext'
+import { useNavigate } from 'react-router-dom'
 import {
   OrderInfoContent,
   OrderInfoContainer,
@@ -16,15 +17,14 @@ import {
   MapPinLine,
   Money,
 } from '@phosphor-icons/react'
-import { useNavigate } from 'react-router-dom'
 
 export function BuyerInfo() {
   const {
     register,
     handleSubmit,
-    getValues,
     setValue,
     resetField,
+    watch,
     formState: { errors },
   } = useFormContext<TBuyerInfoData>()
 
@@ -54,12 +54,16 @@ export function BuyerInfo() {
   }
 
   const findCityAndUF = async () => {
-    const cep = getValues('cep').replace(/\D/g, '')
+    const cep = watch('cep')
+
+    const onlyNumberCep = cep.replace(/\D/g, '')
     const regex = /\d{5}[-.\s]?\d{3}/
 
-    if (regex.test(cep) && cep.length === 8) {
+    if (regex.test(onlyNumberCep) && onlyNumberCep.length === 8) {
       try {
-        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        const response = await fetch(
+          `https://viacep.com.br/ws/${onlyNumberCep}/json/`,
+        )
         const dataLocation = await response.json()
 
         if (dataLocation.erro) throw new Error('Falha na requisição!')
@@ -72,7 +76,6 @@ export function BuyerInfo() {
       }
     } else {
       resetCityAndUFValues()
-      console.error('cep invalido')
     }
   }
 
@@ -109,6 +112,7 @@ export function BuyerInfo() {
             {...register('cep')}
             onBlur={() => findCityAndUF()}
           />
+
           <input type="text" placeholder="Rua" {...register('rua')} />
           <input type="text" placeholder="Número" {...register('numero')} />
           <input

@@ -28,11 +28,6 @@ export function BuyerInfoFormContext({ children }: IProviderProps) {
     defaultValues: {
       cidade: '',
       uf: '',
-      rua: '',
-      numero: '',
-      bairro: '',
-      complemento: '',
-      cep: '',
     },
   })
 

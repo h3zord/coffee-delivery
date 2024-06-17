@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-// import { dataCoffee } from '../../data'
 import { Introduction } from './components/Introduction'
 import { ProductCard } from './components/ProductCard'
 import { IntroductionContainer, ProductsContainer } from './style'
