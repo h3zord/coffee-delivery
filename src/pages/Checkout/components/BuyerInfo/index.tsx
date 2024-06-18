@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { SubmitHandler, useFormContext } from 'react-hook-form'
 import { OrderContext } from '../../../../contexts/OrderContext'
 import { TBuyerInfoData } from '../../../../contexts/BuyerInfoFormContext'
@@ -30,6 +30,8 @@ export function BuyerInfo() {
 
   const { setPaymentMethodProxy, saveBuyerInfoDataProxy, resetCart } =
     useContext(OrderContext)
+
+  const [errorCpf, setErrorCpf] = useState(false)
 
   const navigate = useNavigate()
 
@@ -70,8 +72,10 @@ export function BuyerInfo() {
 
         setValue('cidade', dataLocation.localidade)
         setValue('uf', dataLocation.uf)
+        setErrorCpf(false)
       } catch (error) {
         resetCityAndUFValues()
+        setErrorCpf(true)
         console.error(error)
       }
     } else {
@@ -128,6 +132,8 @@ export function BuyerInfo() {
             {...register('cidade')}
           />
           <input type="text" placeholder="UF" readOnly {...register('uf')} />
+
+          {errorCpf && <span>O CPF informado não existe.</span>}
         </FormContent>
       </OrderInfoContent>
       <OrderInfoContent>

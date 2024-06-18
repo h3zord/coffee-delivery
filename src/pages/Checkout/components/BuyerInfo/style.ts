@@ -137,6 +137,15 @@ export const FormContent = styled.form<TFormProps>`
   input:nth-child(7):focus {
     box-shadow: 0 0 0 2px transparent;
   }
+
+  span:nth-child(8) {
+    color: red;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    grid-column: 2;
+    grid-row: 1;
+  }
 `
 
 export const MethodPaymentContent = styled.div`
