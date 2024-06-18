@@ -79,6 +79,7 @@ export function BuyerInfo() {
         console.error(error)
       }
     } else {
+      setErrorCpf(false)
       resetCityAndUFValues()
     }
   }
