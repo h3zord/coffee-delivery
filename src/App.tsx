@@ -15,7 +15,7 @@ export function App() {
           <Router />
           <ToastContainer
             position="top-center"
-            autoClose={1000}
+            autoClose={1500}
             hideProgressBar={false}
             newestOnTop
             closeOnClick
@@ -23,7 +23,7 @@ export function App() {
             pauseOnFocusLoss={false}
             draggable
             pauseOnHover={false}
-            theme="dark"
+            theme="light"
           />
         </OrderContextProvider>
         <GlobalStyle />

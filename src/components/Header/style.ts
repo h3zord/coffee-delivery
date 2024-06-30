@@ -5,30 +5,29 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 58.5%;
+  gap: 60vw;
   width: 99vw;
+`
 
-  & > div {
-    display: flex;
-    justify-content: space-between;
-    width: 12rem;
-  }
+export const LocaltionAndCartButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
 
-  div span {
+  & > span {
+    padding: 0.75rem;
     font-size: 0.875rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 9rem;
     height: 2.375rem;
     color: ${(props) => props.theme['purple-dark']};
     background-color: ${(props) => props.theme['purple-light']};
     border-radius: 6px;
-    gap: 0.2rem;
-    font-family: 'Roboto', sans-serif;
+    gap: 0.5rem;
   }
 
-  .cart-button {
+  & > a {
     position: relative;
     display: flex;
     align-items: center;
@@ -38,28 +37,26 @@ export const HeaderContainer = styled.header`
     border-radius: 6px;
     background-color: ${(props) => props.theme['yellow-light']};
     opacity: 0.9;
-  }
 
-  .cart-button:hover {
-    opacity: 1;
-  }
+    &:hover {
+      opacity: 1;
+    }
 
-  .counter-coffee {
-    position: absolute;
-    border-radius: 100%;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.3;
-    width: 1.3rem;
-    height: 1.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    right: -10px;
-    top: -10px;
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: ${(props) => props.theme.white};
-    background-color: ${(props) => props.theme['yellow-dark']};
-    text-decoration: none;
+    & > div {
+      position: absolute;
+      border-radius: 999px;
+      line-height: 1.3;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      right: -12px;
+      top: -12px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: ${(props) => props.theme.white};
+      background-color: ${(props) => props.theme['yellow-dark']};
+    }
   }
 `

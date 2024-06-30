@@ -2,36 +2,37 @@ import styled from 'styled-components'
 import { TFormProps } from '../../../../interfacesAndTypes'
 
 export const OrderInfoContainer = styled.div`
-  width: 40rem;
+  margin-bottom: 2rem;
 
   & > h6 {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.125rem;
+    font-size: 1.3rem;
     line-height: 1.3;
     margin-bottom: 1rem;
     color: ${(props) => props.theme['base-subtitle']};
   }
 `
 
-export const OrderInfoContent = styled.div`
+export const BuyerInfoForm = styled.form`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+`
+
+export const BuyerInfoContent = styled.div`
+  display: flex;
   flex-direction: column;
   padding: 2.5rem;
   border-radius: 6px;
-  margin-bottom: 0.75rem;
   background-color: ${(props) => props.theme['base-card']};
 `
 
 export const DescriptionContent = styled.div`
   display: grid;
-  grid-template-columns: 1.875rem 33.125rem;
-  grid-template-rows: 1fr 1fr;
-  width: 35rem;
+  grid-template-columns: 2rem 1fr;
   margin-bottom: 2rem;
 
   & > h6 {
-    font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.3;
@@ -39,132 +40,112 @@ export const DescriptionContent = styled.div`
   }
 
   & > p {
-    grid-row: 2;
     grid-column: 2;
     color: ${(props) => props.theme['base-text']};
     font-size: 0.875rem;
-    font-family: 'Roboto', sans-serif;
     line-height: 1.3;
   }
 `
 
-export const FormContent = styled.form<TFormProps>`
+export const FormContent = styled.div<TFormProps>`
   display: grid;
   grid-gap: 0.75rem;
-  grid-template-columns: 12.5rem 17.25rem 3.75rem;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  width: 35rem;
+  grid-template-columns: 12.5rem 17.25rem 1fr;
 
-  input {
-    height: 2.625rem;
+  & > input {
+    width: 100%;
+    border: 1px solid transparent;
     border-radius: 4px;
     background-color: ${(props) => props.theme['base-input']};
     color: ${(props) => props.theme['base-text']};
-    border: 1px solid transparent;
-    padding: 12px;
+    padding: 0.75rem;
     font-size: 0.875rem;
     line-height: 1.3;
   }
 
-  input:focus {
-    box-shadow: 0 0 0 2px
-      ${(props) =>
-        Object.values(props.$hasTypeError).includes(true)
-          ? 'transparent'
-          : props.theme['yellow-dark']};
-  }
-
-  input::placeholder {
-    font-family: 'Roboto', sans-serif;
+  & > input::placeholder {
     font-size: 0.875rem;
     line-height: 1.3;
     color: ${(props) => props.theme['base-label']};
   }
 
-  input:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-    border: 1px solid
-      ${(props) => (props.$hasTypeError.cep ? 'red' : 'transparent')};
+  & > input:focus {
+    box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
   }
 
-  input:nth-child(2) {
+  & > input:nth-child(1) {
+    grid-column: 1;
+    border: 1px solid
+      ${(props) => (props.$hasFormError.cep ? props.theme.red : 'transparent')};
+  }
+
+  & > input:nth-child(2) {
     grid-column: span 3;
-    grid-row: 2;
     border: 1px solid
-      ${(props) => (props.$hasTypeError.rua ? 'red' : 'transparent')};
+      ${(props) => (props.$hasFormError.rua ? props.theme.red : 'transparent')};
   }
 
-  input:nth-child(3) {
+  & > input:nth-child(3) {
     grid-column: 1;
-    grid-row: 3;
     border: 1px solid
-      ${(props) => (props.$hasTypeError.numero ? 'red' : 'transparent')};
+      ${(props) =>
+        props.$hasFormError.numero ? props.theme.red : 'transparent'};
   }
 
-  input:nth-child(4) {
+  & > input:nth-child(4) {
     grid-column: span 2;
-    grid-row: 3;
   }
 
-  input:nth-child(5) {
+  & > input:nth-child(5) {
     grid-column: 1;
-    grid-row: 4;
     border: 1px solid
-      ${(props) => (props.$hasTypeError.bairro ? 'red' : 'transparent')};
+      ${(props) =>
+        props.$hasFormError.bairro ? props.theme.red : 'transparent'};
   }
 
-  input:nth-child(6) {
+  & > input:nth-child(6) {
     grid-column: 2;
-    grid-row: 4;
     cursor: not-allowed;
     border: 1px solid
-      ${(props) => (props.$hasTypeError.cidade ? 'red' : 'transparent')};
+      ${(props) =>
+        props.$hasFormError.cidade ? props.theme.red : 'transparent'};
   }
 
-  input:nth-child(6):focus {
-    box-shadow: 0 0 0 2px transparent;
-  }
-
-  input:nth-child(7) {
+  & > input:nth-child(7) {
     grid-column: 3;
-    grid-row: 4;
     cursor: not-allowed;
     border: 1px solid
-      ${(props) => (props.$hasTypeError.uf ? 'red' : 'transparent')};
+      ${(props) => (props.$hasFormError.uf ? props.theme.red : 'transparent')};
   }
 
-  input:nth-child(7):focus {
-    box-shadow: 0 0 0 2px transparent;
+  & > input:nth-child(6):focus,
+  & > input:nth-child(7):focus {
+    box-shadow: none;
   }
 
-  span:nth-child(8) {
-    color: red;
+  & > span:nth-child(8) {
+    grid-column: 2;
+    grid-row: 1;
+    color: ${(props) => props.theme.red};
     font-family: monospace;
     display: flex;
     align-items: center;
-    grid-column: 2;
-    grid-row: 1;
   }
 `
 
 export const MethodPaymentContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 35rem;
+  display: grid;
+  grid-gap: 0.75rem;
+  grid-template-columns: 1fr 1fr 1fr;
 
   & > button {
     border: none;
     border-radius: 6px;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
     padding: 1rem;
-    width: 11rem;
-    height: 3.2rem;
-    font-family: 'Roboto', sans-serif;
     font-size: 0.75rem;
-    line-height: 1.6;
     color: ${(props) => props.theme['base-text']};
     background-color: ${(props) => props.theme['base-button']};
     transition: 0.1s;
@@ -177,7 +158,7 @@ export const MethodPaymentContent = styled.div`
     color: ${(props) => props.theme['base-subtitle']};
   }
 
-  .active {
+  & > .active {
     background-color: ${(props) => props.theme['purple-light']};
     border: 1px solid ${(props) => props.theme.purple};
   }

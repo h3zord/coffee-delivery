@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
 export const SelectedCoffeeContainer = styled.div`
-  width: 28rem;
   margin-bottom: 2rem;
 
   & > h6 {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.125rem;
+    font-size: 1.3rem;
     line-height: 1.3;
     margin-bottom: 1rem;
     color: ${(props) => props.theme['base-subtitle']};
@@ -14,64 +13,58 @@ export const SelectedCoffeeContainer = styled.div`
 `
 
 export const SelectedCoffeeContent = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 2.5rem;
   border-radius: 6px 44px 6px 44px;
   background-color: ${(props) => props.theme['base-card']};
 
-  & > div > hr {
+  & > hr {
     margin: 1.5rem 0px;
     border: 1.5px solid ${(props) => props.theme['base-button']};
   }
 `
 
 export const BoughtCoffeContent = styled.div`
-  width: 23rem;
   display: flex;
-  justify-content: space-between;
-  padding: 4px 2px;
+  gap: 2rem;
 
   & > div:nth-child(1) {
     display: flex;
-    justify-content: space-between;
-    width: 15.95rem;
+    gap: 1rem;
+
+    & > img {
+      width: 64px;
+    }
   }
 
-  div:nth-child(1) > img {
-    width: 4rem;
-  }
-
-  div:nth-child(1) > div {
+  & > div:nth-child(1) > div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 10.7rem;
-  }
 
-  div:nth-child(1) > div > p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    line-height: 1.3;
-    color: ${(props) => props.theme['base-subtitle']};
-  }
+    & > p {
+      font-size: 1rem;
+      line-height: 1.3;
+      color: ${(props) => props.theme['base-subtitle']};
+    }
 
-  div:nth-child(1) > div > div {
-    display: flex;
-    justify-content: space-between;
-    width: 10.7rem;
+    & > div {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .remove-button {
     border: none;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
     border-radius: 6px;
     display: flex;
-    width: 5.7rem;
-    line-height: 1.6;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     font-size: 0.75rem;
-    font-family: 'Roboto', sans-serif;
     color: ${(props) => props.theme['base-text']};
     background-color: ${(props) => props.theme['base-button']};
     transition: 0.1s;
@@ -85,28 +78,23 @@ export const BoughtCoffeContent = styled.div`
 
   & > span:nth-child(2) {
     color: ${(props) => props.theme['base-text']};
-    font-family: 'Roboto', sans-serif;
+    text-align: right;
     font-weight: 700;
     line-height: 1.3;
     font-size: 1rem;
+    width: 5rem;
   }
 `
 export const TotalPriceContent = styled.div`
-  width: 23rem;
-  height: 5.75rem;
   display: flex;
+  gap: 0.5rem;
   flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
 
   & > div:nth-child(1),
   & > div:nth-child(2) {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    height: 1.3125rem;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.3;
+    line-height: 1.5;
     font-size: 0.875rem;
     color: ${(props) => props.theme['base-text']};
   }
@@ -115,8 +103,6 @@ export const TotalPriceContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 1.625rem;
-    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     line-height: 1.3;
     font-size: 1.25rem;
@@ -124,10 +110,9 @@ export const TotalPriceContent = styled.div`
   }
 `
 export const ConfirmButton = styled.button`
-  width: 23rem;
-  height: 2.875rem;
-  font-family: 'Roboto', sans-serif;
+  margin-top: 2rem;
   line-height: 1.6;
+  padding: 0.875rem;
   font-size: 0.875rem;
   border: none;
   border-radius: 6px;

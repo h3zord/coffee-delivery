@@ -9,12 +9,13 @@ import {
   SelectedCoffeeContent,
   TotalPriceContent,
 } from './style'
+import { IDataCoffeeOrder } from '../../../../interfacesAndTypes'
 
 export function SelectedCoffee() {
   const {
     coffeeListOrder,
-    deleteCoffeeFromCart,
-    addOneMoreCoffeeFromOrder,
+    deleteCoffeeFromOrder,
+    addOneMoreCoffeeToOrder,
     removeOneMoreCoffeeFromOrder,
   } = useContext(OrderContext)
 
@@ -28,28 +29,36 @@ export function SelectedCoffee() {
     setTotalPrice(sumTotalPrice)
   }, [coffeeListOrder, setTotalPrice])
 
+  function handleDeleteCoffeeFromOrder(coffee: IDataCoffeeOrder) {
+    deleteCoffeeFromOrder(coffee)
+  }
+
   return (
     <SelectedCoffeeContainer data-testid="selected-coffee">
       <h6>Cafés selecionados</h6>
       <SelectedCoffeeContent>
         {coffeeListOrder.map((coffee) => (
-          <div key={coffee.id}>
-            <BoughtCoffeContent>
+          <>
+            <BoughtCoffeContent key={coffee.id}>
               <div>
-                <img src={coffee.thumbnail} alt="" />
+                <img src={coffee.thumbnail} alt="Coffee Thumbnail" />
+
                 <div>
                   <p>{coffee.name}</p>
+
                   <div>
                     <ProductQuantity
                       dataCoffee={coffee}
-                      addOneMoreCoffeeFromOrder={addOneMoreCoffeeFromOrder}
+                      addOneMoreCoffeeToOrder={addOneMoreCoffeeToOrder}
                       removeOneMoreCoffeeFromOrder={
                         removeOneMoreCoffeeFromOrder
                       }
                     />
+
                     <button
+                      type="button"
                       className="remove-button"
-                      onClick={() => deleteCoffeeFromCart(coffee)}
+                      onClick={() => handleDeleteCoffeeFromOrder(coffee)}
                     >
                       <Trash size="16" color="#8047f8" />
                       REMOVER
@@ -57,30 +66,46 @@ export function SelectedCoffee() {
                   </div>
                 </div>
               </div>
+
               <span>
-                {`R$ ${(coffee.price * coffee.quantity)
-                  .toFixed(2)
-                  .replace('.', ',')}`}
+                {`${(coffee.price * coffee.quantity).toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}`}
               </span>
             </BoughtCoffeContent>
+
             <hr />
-          </div>
+          </>
         ))}
 
         <TotalPriceContent>
           <div>
             <span>Total de itens</span>
-            <span>{`R$ ${totalPrice.toFixed(2).replace('.', ',')}`}</span>
+            <span>
+              {totalPrice.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+            </span>
           </div>
+
           <div>
             <span>Entrega</span>
             <span>R$ 3,50</span>
           </div>
+
           <div>
             <span>Total</span>
-            <p>{`R$ ${(totalPrice + 3.5).toFixed(2).replace('.', ',')}`}</p>
+            <p>
+              {(totalPrice + 3.5).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+            </p>
           </div>
         </TotalPriceContent>
+
         <ConfirmButton type="submit" form="buyer-info-form">
           CONFIRMAR PEDIDO
         </ConfirmButton>

@@ -10,10 +10,15 @@ const buyerInfoValidationSchema = zod.object({
   numero: zod.string().min(1, 'Este campo é de preenchimento obrigatório'),
   bairro: zod.string().min(1, 'Este campo é de preenchimento obrigatório'),
   complemento: zod.string().optional(),
+  metodoPagamento: zod.enum([
+    'Cartão de crédito',
+    'Cartão de débito',
+    'Dinheiro',
+  ]),
   cep: zod
     .string()
     .min(1, 'Este campo é de preenchimento obrigatório')
-    .max(9, 'Este formato de CEP é inválido')
+    .max(8, 'Este formato de CEP é inválido')
     .regex(/\d{5}[-.\s]?\d{3}/, {
       message: 'Este formato de CEP é inválido',
     })
@@ -23,13 +28,9 @@ const buyerInfoValidationSchema = zod.object({
 export type TBuyerInfoData = zod.infer<typeof buyerInfoValidationSchema>
 
 export function BuyerInfoFormContext({ children }: IProviderProps) {
-  const BuyerInfo = useForm<TBuyerInfoData>({
+  const formMethods = useForm<TBuyerInfoData>({
     resolver: zodResolver(buyerInfoValidationSchema),
-    defaultValues: {
-      cidade: '',
-      uf: '',
-    },
   })
 
-  return <FormProvider {...BuyerInfo}>{children}</FormProvider>
+  return <FormProvider {...formMethods}>{children}</FormProvider>
 }

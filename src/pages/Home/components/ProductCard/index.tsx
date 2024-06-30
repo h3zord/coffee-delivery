@@ -2,19 +2,19 @@ import { useContext, useEffect, useReducer, useState } from 'react'
 import { ProductQuantity } from '../../../../components/ProductQuantity'
 import { ProductCardContainer } from './styles'
 import { ShoppingCartSimple } from '@phosphor-icons/react'
-import { IDataCoffee, IDataCoffeeCart } from '../../../../interfacesAndTypes'
+import { IDataCoffee, IDataCoffeeOrder } from '../../../../interfacesAndTypes'
 import { coffeeQuantityReducer } from '../../../../reducers/coffeeQuantity'
 import { OrderContext } from '../../../../contexts/OrderContext'
 import { toast } from 'react-toastify'
 import {
-  addOneMoreCoffeeAction,
-  removeOneMoreCoffeeAction,
+  addOneMoreCoffeeToCartAction,
+  removeOneMoreCoffeeFromCartAction,
 } from '../../../../reducers/actions'
 
 export function ProductCard(coffee: IDataCoffee) {
   const { addCoffeeToCart, coffeeListOrder } = useContext(OrderContext)
 
-  const [dataCoffeeToAdd, setDataCoffeeToAdd] = useState({} as IDataCoffeeCart)
+  const [dataCoffeeToAdd, setDataCoffeeToAdd] = useState({} as IDataCoffeeOrder)
 
   const findCoffee = coffeeListOrder.find(({ id }) => id === coffee.id)
 
@@ -33,32 +33,38 @@ export function ProductCard(coffee: IDataCoffee) {
     })
   }, [coffee, coffeeQuantity])
 
-  const addOneMoreCoffee = () => {
-    dispatch(addOneMoreCoffeeAction())
+  const addOneMoreCoffeeToCart = () => {
+    dispatch(addOneMoreCoffeeToCartAction())
   }
 
-  const removeOneMoreCoffee = () => {
-    dispatch(removeOneMoreCoffeeAction())
+  const removeOneMoreCoffeeFromCart = () => {
+    dispatch(removeOneMoreCoffeeFromCartAction())
   }
 
   return (
     <ProductCardContainer key={coffee.id} data-testid="coffee-card">
-      <img src={coffee.thumbnail} alt="" />
+      <img src={coffee.thumbnail} alt="Coffee thumbnail" />
+
       <div>
         {coffee.tags.map((tag) => (
           <span key={tag}>{tag}</span>
         ))}
       </div>
+
       <h6>{coffee.name}</h6>
       <p>{coffee.description}</p>
+
       <div>
         <span>R$</span>
+
         <p>{coffee.price.toFixed(2).replace('.', ',')}</p>
+
         <ProductQuantity
           dataCoffee={dataCoffeeToAdd}
-          addOneMoreCoffee={addOneMoreCoffee}
-          removeOneMoreCoffee={removeOneMoreCoffee}
+          addOneMoreCoffeeToCart={addOneMoreCoffeeToCart}
+          removeOneMoreCoffeeFromCart={removeOneMoreCoffeeFromCart}
         />
+
         <button
           data-testid="add-to-cart"
           disabled={!coffeeQuantity}

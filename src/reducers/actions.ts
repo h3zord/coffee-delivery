@@ -1,28 +1,16 @@
-import { IDataCoffeeCart } from '../interfacesAndTypes'
+import { IDataCoffeeOrder } from '../interfacesAndTypes'
 
 export enum ActionTypes {
-  ADD_ONE_MORE_COFFEE = 'ADD_ONE_MORE_COFFEE',
-  REMOVE_ONE_MORE_COFFEE = 'REMOVE_ONE_MORE_COFFEE',
-  ADD_ONE_MORE_COFFEE_FROM_ORDER = 'ADD_ONE_MORE_COFFEE_FROM_ORDER',
-  REMOVE_ONE_MORE_COFFEE_FROM_ORDER = 'REMOVE_ONE_MORE_COFFEE_FROM_ORDER',
   ADD_COFFEE_TO_CART = 'ADD_COFFEE_TO_CART',
-  DELETE_COFFEE_FROM_CART = 'DELETE_COFFEE_FROM_CART',
+  ADD_ONE_MORE_COFFEE_TO_CART = 'ADD_ONE_MORE_COFFEE_TO_CART',
+  REMOVE_ONE_MORE_COFFEE_FROM_CART = 'REMOVE_ONE_MORE_COFFEE_FROM_CART',
+  ADD_ONE_MORE_COFFEE_TO_ORDER = 'ADD_ONE_MORE_COFFEE_TO_ORDER',
+  REMOVE_ONE_MORE_COFFEE_FROM_ORDER = 'REMOVE_ONE_MORE_COFFEE_FROM_ORDER',
+  DELETE_COFFEE_FROM_ORDER = 'DELETE_COFFEE_FROM_ORDER',
   RESET_CART = 'RESET_CART',
 }
 
-export function addOneMoreCoffeeAction() {
-  return {
-    type: ActionTypes.ADD_ONE_MORE_COFFEE,
-  }
-}
-
-export function removeOneMoreCoffeeAction() {
-  return {
-    type: ActionTypes.REMOVE_ONE_MORE_COFFEE,
-  }
-}
-
-export function addCoffeeToCartAction(dataCoffee: IDataCoffeeCart) {
+export function addCoffeeToCartAction(dataCoffee: IDataCoffeeOrder) {
   return {
     type: ActionTypes.ADD_COFFEE_TO_CART,
     payload: {
@@ -31,18 +19,21 @@ export function addCoffeeToCartAction(dataCoffee: IDataCoffeeCart) {
   }
 }
 
-export function deleteCoffeeFromCartAction(dataCoffee: IDataCoffeeCart) {
+export function addOneMoreCoffeeToCartAction() {
   return {
-    type: ActionTypes.DELETE_COFFEE_FROM_CART,
-    payload: {
-      dataCoffee,
-    },
+    type: ActionTypes.ADD_ONE_MORE_COFFEE_TO_CART,
   }
 }
 
-export function addOneMoreCoffeeFromOrderAction(dataCoffee: IDataCoffeeCart) {
+export function removeOneMoreCoffeeFromCartAction() {
   return {
-    type: ActionTypes.ADD_ONE_MORE_COFFEE_FROM_ORDER,
+    type: ActionTypes.REMOVE_ONE_MORE_COFFEE_FROM_CART,
+  }
+}
+
+export function addOneMoreCoffeeToOrderAction(dataCoffee: IDataCoffeeOrder) {
+  return {
+    type: ActionTypes.ADD_ONE_MORE_COFFEE_TO_ORDER,
     payload: {
       dataCoffee,
     },
@@ -50,10 +41,19 @@ export function addOneMoreCoffeeFromOrderAction(dataCoffee: IDataCoffeeCart) {
 }
 
 export function removeOneMoreCoffeeFromOrderAction(
-  dataCoffee: IDataCoffeeCart,
+  dataCoffee: IDataCoffeeOrder,
 ) {
   return {
     type: ActionTypes.REMOVE_ONE_MORE_COFFEE_FROM_ORDER,
+    payload: {
+      dataCoffee,
+    },
+  }
+}
+
+export function deleteCoffeeFromOrderAction(dataCoffee: IDataCoffeeOrder) {
+  return {
+    type: ActionTypes.DELETE_COFFEE_FROM_ORDER,
     payload: {
       dataCoffee,
     },

@@ -1,23 +1,13 @@
-import { useEffect, useState } from 'react'
 import { Introduction } from './components/Introduction'
 import { ProductCard } from './components/ProductCard'
-import { IntroductionContainer, ProductsContainer } from './style'
-import { IDataCoffee } from '../../interfacesAndTypes'
+import { coffees } from '../../data/coffees'
+import {
+  IntroductionContainer,
+  ProductsContainer,
+  ProductsContent,
+} from './style'
 
 export function Home() {
-  const [dataCoffee, setDataCoffe] = useState<IDataCoffee[]>([])
-
-  useEffect(() => {
-    const getDataCoffee = async () => {
-      const response = await fetch('http://localhost:3333/coffees')
-      const data = await response.json()
-
-      setDataCoffe(data)
-    }
-
-    getDataCoffee()
-  }, [])
-
   return (
     <>
       <IntroductionContainer>
@@ -25,11 +15,11 @@ export function Home() {
       </IntroductionContainer>
       <ProductsContainer>
         <h2>Nossos cafés</h2>
-        <div>
-          {dataCoffee.map((coffee) => (
+        <ProductsContent>
+          {coffees.map((coffee) => (
             <ProductCard {...coffee} key={coffee.id} />
           ))}
-        </div>
+        </ProductsContent>
       </ProductsContainer>
     </>
   )

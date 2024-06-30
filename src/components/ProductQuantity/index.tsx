@@ -1,32 +1,44 @@
-import { IProductQuantityProps } from '../../interfacesAndTypes'
 import { ProductQuantityContainer } from './style'
 import { Plus, Minus } from '@phosphor-icons/react'
+import {
+  IDataCoffeeOrder,
+  IProductQuantityProps,
+} from '../../interfacesAndTypes'
+
+type PrimaryAction = (() => void) | undefined
+type SecondaryAction = ((dataCoffee: IDataCoffeeOrder) => void) | undefined
 
 export function ProductQuantity({
   dataCoffee,
-  addOneMoreCoffee,
-  removeOneMoreCoffee,
-  addOneMoreCoffeeFromOrder,
+  addOneMoreCoffeeToCart,
+  removeOneMoreCoffeeFromCart,
+  addOneMoreCoffeeToOrder,
   removeOneMoreCoffeeFromOrder,
 }: IProductQuantityProps) {
-  const handleAddCoffee = () => {
-    if (addOneMoreCoffee) return addOneMoreCoffee()
-    if (addOneMoreCoffeeFromOrder) return addOneMoreCoffeeFromOrder(dataCoffee)
+  const handleCoffeeAction = (
+    primaryAction: PrimaryAction,
+    secondaryAction: SecondaryAction,
+  ) => {
+    if (primaryAction) return primaryAction()
+    if (secondaryAction) return secondaryAction(dataCoffee)
   }
 
-  const handleRemoveCoffee = () => {
-    if (removeOneMoreCoffee) return removeOneMoreCoffee()
-    if (removeOneMoreCoffeeFromOrder)
-      return removeOneMoreCoffeeFromOrder(dataCoffee)
-  }
+  const handleAddCoffee = () =>
+    handleCoffeeAction(addOneMoreCoffeeToCart, addOneMoreCoffeeToOrder)
+
+  const handleRemoveCoffee = () =>
+    handleCoffeeAction(
+      removeOneMoreCoffeeFromCart,
+      removeOneMoreCoffeeFromOrder,
+    )
 
   return (
     <ProductQuantityContainer>
-      <button onClick={() => handleRemoveCoffee()} data-testid="sub-coffee">
+      <button onClick={handleRemoveCoffee} data-testid="sub-coffee">
         <Minus weight="bold" size="16" />
       </button>
       <span className="quantity-value">{dataCoffee.quantity}</span>
-      <button onClick={() => handleAddCoffee()} data-testid="add-coffee">
+      <button onClick={handleAddCoffee} data-testid="add-coffee">
         <Plus weight="bold" size="16" />
       </button>
     </ProductQuantityContainer>

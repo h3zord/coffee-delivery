@@ -9,7 +9,7 @@ import {
 } from './style'
 
 export function OrderConfirmation() {
-  const { buyerInfoData, paymentMethod } = useContext(OrderContext)
+  const { buyerInfoData } = useContext(OrderContext)
 
   return (
     <OrderConfirmationContainer>
@@ -18,6 +18,7 @@ export function OrderConfirmation() {
           <div style={{ backgroundColor: '#8047f8' }}>
             <MapPin weight="fill" color="#FAFAFA" size="16" />
           </div>
+
           <p>
             Entrega em <br />
             <strong>
@@ -29,25 +30,30 @@ export function OrderConfirmation() {
             </strong>
           </p>
         </OrderDetails>
+
         <OrderDetails>
           <div style={{ backgroundColor: '#DBAC2C' }}>
             <Timer weight="fill" color="#FAFAFA" size="16" />
           </div>
+
           <p>
             Previsão de entrega <br />
             <strong>20 min - 30 min</strong>
           </p>
         </OrderDetails>
+
         <OrderDetails>
           <div style={{ backgroundColor: '#C47F17' }}>
             <CurrencyDollar color="#FAFAFA" size="16" />
           </div>
+
           <p>
             Pagamento na entrega <br />
-            <strong>{paymentMethod}</strong>
+            <strong>{buyerInfoData.metodoPagamento}</strong>
           </p>
         </OrderDetails>
       </OrderConfirmationContent>
+
       <img src={deliveryMan} alt="" />
     </OrderConfirmationContainer>
   )

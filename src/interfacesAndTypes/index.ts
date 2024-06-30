@@ -1,7 +1,7 @@
-import { MouseEvent, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { TBuyerInfoData } from '../contexts/BuyerInfoFormContext'
 
-export interface IDataCoffeeCart {
+export interface IDataCoffeeOrder {
   id: number
   name: string
   price: number
@@ -15,18 +15,16 @@ export type TPaymentMethod =
   | 'Dinheiro'
 
 export interface IOrderContextType {
-  coffeeListOrder: IDataCoffeeCart[]
+  coffeeListOrder: IDataCoffeeOrder[]
   buyerInfoData: TBuyerInfoData
-  paymentMethod: TPaymentMethod
-  addCoffeeToCart: (newCoffee: IDataCoffeeCart) => void
-  deleteCoffeeFromCart: (coffeeToDelete: IDataCoffeeCart) => void
-  addOneMoreCoffeeFromOrder: (coffeeToIncreaseQuantity: IDataCoffeeCart) => void
-  saveBuyerInfoDataProxy: (data: TBuyerInfoData) => void
-  setPaymentMethodProxy: (event: MouseEvent<HTMLButtonElement>) => void
-  resetCart: () => void
+  addCoffeeToCart: (newCoffee: IDataCoffeeOrder) => void
+  addOneMoreCoffeeToOrder: (coffeeToIncreaseQuantity: IDataCoffeeOrder) => void
   removeOneMoreCoffeeFromOrder: (
-    coffeeToDecreaseQuantity: IDataCoffeeCart,
+    coffeeToDecreaseQuantity: IDataCoffeeOrder,
   ) => void
+  deleteCoffeeFromOrder: (coffeeToDelete: IDataCoffeeOrder) => void
+  resetOrder: () => void
+  saveBuyerInfoDataProxy: (data: TBuyerInfoData) => void
 }
 
 export interface IProviderProps {
@@ -43,14 +41,12 @@ export interface IDataCoffee {
 }
 
 export interface IProductQuantityProps {
-  dataCoffee: IDataCoffeeCart
-  addOneMoreCoffee?: () => void
-  removeOneMoreCoffee?: () => void
-  addOneMoreCoffeeFromOrder?: (
-    coffeeToIncreaseQuantity: IDataCoffeeCart,
-  ) => void
+  dataCoffee: IDataCoffeeOrder
+  addOneMoreCoffeeToCart?: () => void
+  removeOneMoreCoffeeFromCart?: () => void
+  addOneMoreCoffeeToOrder?: (coffeeToIncreaseQuantity: IDataCoffeeOrder) => void
   removeOneMoreCoffeeFromOrder?: (
-    coffeeToDecreaseQuantity: IDataCoffeeCart,
+    coffeeToDecreaseQuantity: IDataCoffeeOrder,
   ) => void
 }
 
@@ -61,12 +57,12 @@ export interface ICoffeeQuantityAction {
 export interface ICoffeeListOrderAction {
   type: string
   payload?: {
-    dataCoffee: IDataCoffeeCart
+    dataCoffee: IDataCoffeeOrder
   }
 }
 
 export type TFormProps = {
-  $hasTypeError: {
+  $hasFormError: {
     cidade: boolean
     uf: boolean
     rua: boolean
@@ -74,4 +70,17 @@ export type TFormProps = {
     bairro: boolean
     cep: boolean
   }
+}
+
+export interface IGeoInfoData {
+  ip: string
+  hostname: string
+  city: string
+  region: string
+  country: string
+  loc: string
+  org: string
+  postal: string
+  timezone: string
+  readme: string
 }

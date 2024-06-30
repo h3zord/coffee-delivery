@@ -1,74 +1,65 @@
-import { MouseEvent, createContext, useReducer, useState } from 'react'
+import { createContext, useReducer, useState } from 'react'
 import { coffeeListOrderReducer } from '../reducers/coffeeListOrder'
 import { TBuyerInfoData } from './BuyerInfoFormContext'
 import {
   addCoffeeToCartAction,
-  addOneMoreCoffeeFromOrderAction,
-  deleteCoffeeFromCartAction,
+  addOneMoreCoffeeToOrderAction,
+  deleteCoffeeFromOrderAction,
   removeOneMoreCoffeeFromOrderAction,
   resetCartAction,
 } from '../reducers/actions'
 import {
-  IDataCoffeeCart,
+  IDataCoffeeOrder,
   IProviderProps,
   IOrderContextType,
-  TPaymentMethod,
 } from '../interfacesAndTypes'
 
 export const OrderContext = createContext({} as IOrderContextType)
 
 export function OrderContextProvider({ children }: IProviderProps) {
-  const [coffeeListOrder, dispatch] = useReducer(coffeeListOrderReducer, [])
+  const [coffeeListOrder, dispatch] = useReducer(
+    coffeeListOrderReducer,
+    [] as IDataCoffeeOrder[],
+  )
 
   const [buyerInfoData, setBuyerInfoData] = useState({} as TBuyerInfoData)
 
-  const [paymentMethod, setPaymentMethod] =
-    useState<TPaymentMethod>('Cartão de crédito')
-
-  const addCoffeeToCart = (newCoffee: IDataCoffeeCart) => {
+  const addCoffeeToCart = (newCoffee: IDataCoffeeOrder) => {
     dispatch(addCoffeeToCartAction(newCoffee))
   }
 
-  const deleteCoffeeFromCart = (coffeeToDelete: IDataCoffeeCart) => {
-    dispatch(deleteCoffeeFromCartAction(coffeeToDelete))
-  }
-
-  const addOneMoreCoffeeFromOrder = (
-    coffeeToIncreaseQuantity: IDataCoffeeCart,
+  const addOneMoreCoffeeToOrder = (
+    coffeeToIncreaseQuantity: IDataCoffeeOrder,
   ) => {
-    dispatch(addOneMoreCoffeeFromOrderAction(coffeeToIncreaseQuantity))
+    dispatch(addOneMoreCoffeeToOrderAction(coffeeToIncreaseQuantity))
   }
 
   const removeOneMoreCoffeeFromOrder = (
-    coffeeToDecreaseQuantity: IDataCoffeeCart,
+    coffeeToDecreaseQuantity: IDataCoffeeOrder,
   ) => {
     dispatch(removeOneMoreCoffeeFromOrderAction(coffeeToDecreaseQuantity))
   }
 
-  const setPaymentMethodProxy = (event: MouseEvent<HTMLButtonElement>) => {
-    const value = event.currentTarget.value as TPaymentMethod
-
-    setPaymentMethod(value)
+  const deleteCoffeeFromOrder = (coffeeToDelete: IDataCoffeeOrder) => {
+    dispatch(deleteCoffeeFromOrderAction(coffeeToDelete))
   }
 
-  const saveBuyerInfoDataProxy = (data: TBuyerInfoData) =>
-    setBuyerInfoData(data)
+  const resetOrder = () => dispatch(resetCartAction())
 
-  const resetCart = () => dispatch(resetCartAction())
+  const saveBuyerInfoDataProxy = (buyerInfo: TBuyerInfoData) =>
+    setBuyerInfoData(buyerInfo)
 
   return (
     <OrderContext.Provider
       value={{
         coffeeListOrder,
         buyerInfoData,
-        paymentMethod,
         addCoffeeToCart,
-        deleteCoffeeFromCart,
-        addOneMoreCoffeeFromOrder,
+        deleteCoffeeFromOrder,
+        addOneMoreCoffeeToOrder,
         removeOneMoreCoffeeFromOrder,
+        resetOrder,
         saveBuyerInfoDataProxy,
-        setPaymentMethodProxy,
-        resetCart,
       }}
     >
       {children}
