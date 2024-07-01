@@ -33,8 +33,8 @@ export const OrderDetails = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    min-width: 2rem;
+    min-height: 2rem;
     border-radius: 999px;
   }
 `

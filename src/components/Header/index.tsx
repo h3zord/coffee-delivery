@@ -36,13 +36,22 @@ export function Header() {
       <LocaltionAndCartButton>
         <span data-testid="location">
           <MapPin size={22} weight="fill" />
-          {`${userLocation.city} - ${userLocation.region}`}
+          {`${userLocation.city ?? 'Curitiba'} - ${
+            userLocation.region ?? 'Paraná'
+          }`}
         </span>
 
         <Link to={'/checkout'} title="Redirect to checkout">
-          <ShoppingCart size="22" weight="fill" color="#C47F17" />
+          <ShoppingCart
+            data-testid="cart-button"
+            size="22"
+            weight="fill"
+            color="#C47F17"
+          />
 
-          {coffeeListOrder.length > 0 && <div>{coffeeQuantity}</div>}
+          {coffeeListOrder.length > 0 && (
+            <div data-testid="counter-coffee">{coffeeQuantity}</div>
+          )}
         </Link>
       </LocaltionAndCartButton>
     </HeaderContainer>

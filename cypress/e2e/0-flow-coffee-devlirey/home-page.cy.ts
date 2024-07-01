@@ -11,7 +11,7 @@ describe('Home page tests', () => {
       cy.get('a[href*="/"]').should('have.length', 2)
       cy.get('[data-testid="logo-image"]').should('be.visible')
       cy.get('[data-testid="location"]').should('be.visible')
-      cy.get('.cart-button').should('be.visible')
+      cy.get('[data-testid="cart-button"]').should('be.visible')
     })
   })
 
@@ -22,7 +22,7 @@ describe('Home page tests', () => {
         'have.text',
         'Encontre o café perfeito para qualquer hora do dia',
       )
-      cy.get('[alt="introduction-coffee-image"]').should('be.visible')
+      cy.get('[alt="introduction coffee image"]').should('be.visible')
     })
   })
 
@@ -41,7 +41,7 @@ describe('Home page tests', () => {
       cy.get('[data-testid="add-to-cart"]').eq(0).click()
       cy.get('[data-testid="add-to-cart"]').eq(1).click()
 
-      cy.get('.counter-coffee').should('have.text', 2)
+      cy.get('[data-testid="counter-coffee"]').should('have.text', 2)
     })
   })
 })

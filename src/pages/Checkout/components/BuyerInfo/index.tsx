@@ -71,7 +71,7 @@ export function BuyerInfo() {
         console.error(error)
       }
     } else {
-      setHasCpfError(false)
+      setHasCpfError(true)
 
       resetCityAndUFValues()
     }
@@ -98,6 +98,7 @@ export function BuyerInfo() {
       <BuyerInfoForm
         onSubmit={handleSubmit(saveBuyerInfoData)}
         id="buyer-info-form"
+        data-testid="buyer-info-form"
       >
         <BuyerInfoContent>
           <DescriptionContent>
@@ -138,7 +139,7 @@ export function BuyerInfo() {
             />
             <input type="text" placeholder="UF" readOnly {...register('uf')} />
 
-            {hasCpfError && <span>O CPF informado não existe.</span>}
+            {hasCpfError && <span>O CEP informado não existe.</span>}
           </FormContent>
         </BuyerInfoContent>
 

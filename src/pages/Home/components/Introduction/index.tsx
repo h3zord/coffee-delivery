@@ -32,7 +32,7 @@ export function Introduction() {
           </span>
         </div>
       </IntroductionText>
-      <img src={introduction} alt="introduction Coffee Image" />
+      <img src={introduction} alt="introduction coffee image" />
     </>
   )
 }

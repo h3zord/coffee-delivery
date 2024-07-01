@@ -34,11 +34,15 @@ export function ProductQuantity({
 
   return (
     <ProductQuantityContainer>
-      <button onClick={handleRemoveCoffee} data-testid="sub-coffee">
+      <button
+        type="button"
+        onClick={handleRemoveCoffee}
+        data-testid="sub-coffee"
+      >
         <Minus weight="bold" size="16" />
       </button>
       <span className="quantity-value">{dataCoffee.quantity}</span>
-      <button onClick={handleAddCoffee} data-testid="add-coffee">
+      <button type="button" onClick={handleAddCoffee} data-testid="add-coffee">
         <Plus weight="bold" size="16" />
       </button>
     </ProductQuantityContainer>

@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from 'react'
 import { ProductQuantity } from '../../../../components/ProductQuantity'
 import { Trash } from '@phosphor-icons/react'
 import { OrderContext } from '../../../../contexts/OrderContext'
+import { IDataCoffeeOrder } from '../../../../interfacesAndTypes'
+import { AnimatePresence, motion } from 'framer-motion'
 import {
   BoughtCoffeContent,
   ConfirmButton,
@@ -9,7 +11,6 @@ import {
   SelectedCoffeeContent,
   TotalPriceContent,
 } from './style'
-import { IDataCoffeeOrder } from '../../../../interfacesAndTypes'
 
 export function SelectedCoffee() {
   const {
@@ -36,48 +37,55 @@ export function SelectedCoffee() {
   return (
     <SelectedCoffeeContainer data-testid="selected-coffee">
       <h6>Cafés selecionados</h6>
-      <SelectedCoffeeContent>
-        {coffeeListOrder.map((coffee) => (
-          <>
-            <BoughtCoffeContent key={coffee.id}>
-              <div>
-                <img src={coffee.thumbnail} alt="Coffee Thumbnail" />
 
+      <SelectedCoffeeContent>
+        <AnimatePresence>
+          {coffeeListOrder.map((coffee) => (
+            <motion.div
+              key={coffee.id}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <BoughtCoffeContent key={coffee.id}>
                 <div>
-                  <p>{coffee.name}</p>
+                  <img src={coffee.thumbnail} alt="Coffee Thumbnail" />
 
                   <div>
-                    <ProductQuantity
-                      dataCoffee={coffee}
-                      addOneMoreCoffeeToOrder={addOneMoreCoffeeToOrder}
-                      removeOneMoreCoffeeFromOrder={
-                        removeOneMoreCoffeeFromOrder
-                      }
-                    />
+                    <p>{coffee.name}</p>
 
-                    <button
-                      type="button"
-                      className="remove-button"
-                      onClick={() => handleDeleteCoffeeFromOrder(coffee)}
-                    >
-                      <Trash size="16" color="#8047f8" />
-                      REMOVER
-                    </button>
+                    <div>
+                      <ProductQuantity
+                        dataCoffee={coffee}
+                        addOneMoreCoffeeToOrder={addOneMoreCoffeeToOrder}
+                        removeOneMoreCoffeeFromOrder={
+                          removeOneMoreCoffeeFromOrder
+                        }
+                      />
+
+                      <button
+                        type="button"
+                        className="remove-button"
+                        onClick={() => handleDeleteCoffeeFromOrder(coffee)}
+                      >
+                        <Trash size="16" color="#8047f8" />
+                        REMOVER
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <span>
-                {`${(coffee.price * coffee.quantity).toLocaleString('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}`}
-              </span>
-            </BoughtCoffeContent>
+                <span>
+                  {`${(coffee.price * coffee.quantity).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  })}`}
+                </span>
+              </BoughtCoffeContent>
 
-            <hr />
-          </>
-        ))}
+              <hr />
+            </motion.div>
+          ))}
+        </AnimatePresence>
 
         <TotalPriceContent>
           <div>

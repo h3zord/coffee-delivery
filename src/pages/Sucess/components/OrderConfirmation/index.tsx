@@ -23,9 +23,7 @@ export function OrderConfirmation() {
             Entrega em <br />
             <strong>
               {`${buyerInfoData.rua}, ${buyerInfoData.numero}${
-                buyerInfoData.complemento
-                  ? `. ${buyerInfoData.complemento}`
-                  : ''
+                buyerInfoData.complemento && `. ${buyerInfoData.complemento}`
               } - ${buyerInfoData.cidade}, ${buyerInfoData.uf}`}
             </strong>
           </p>
