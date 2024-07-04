@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { HeaderContainer, LocaltionAndCartButton } from './style'
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
-import coffeeDeliveryLogo from '../../assets/logo.svg'
 import { useContext, useEffect, useState } from 'react'
 import { OrderContext } from '../../contexts/OrderContext'
 import { IGeoInfoData } from '../../interfacesAndTypes'
@@ -30,7 +29,7 @@ export function Header() {
   return (
     <HeaderContainer>
       <Link to="/">
-        <img src={coffeeDeliveryLogo} alt="" data-testid="logo-image" />
+        <img src="/logo.svg" alt="" data-testid="logo-image" />
       </Link>
 
       <LocaltionAndCartButton>

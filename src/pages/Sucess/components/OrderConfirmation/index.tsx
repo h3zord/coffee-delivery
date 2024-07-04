@@ -1,4 +1,3 @@
-import deliveryMan from '../../../../assets/delivery-man.svg'
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { useContext } from 'react'
 import { OrderContext } from '../../../../contexts/OrderContext'
@@ -52,7 +51,7 @@ export function OrderConfirmation() {
         </OrderDetails>
       </OrderConfirmationContent>
 
-      <img src={deliveryMan} alt="" />
+      <img src="/delivery-man.svg" alt="" />
     </OrderConfirmationContainer>
   )
 }

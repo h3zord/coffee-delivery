@@ -1,11 +1,10 @@
 import { BackToHome, EmptyCartContainer } from './style'
-import emptyCart from '../../../../assets/empty-cart.svg'
 import { Link } from 'react-router-dom'
 
 export function EmptyCart() {
   return (
     <EmptyCartContainer>
-      <img src={emptyCart} alt="" />
+      <img src="/public/empty-cart.svg" alt="" />
 
       <h1>Seu carrinho está vazio!</h1>
 
