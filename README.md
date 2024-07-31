@@ -4,7 +4,7 @@
 
 <h2 align="center">
   <a href="https://app-coffee-delivery.vercel.app" target="_blank">
-    Teste o Coffee Delivery!
+    Conheça o Coffee Delivery!
   </a>
 </h2>
 
