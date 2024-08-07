@@ -76,6 +76,8 @@ yarn run dev
 ```
 
 ### 5 - Rodando os testes:
+<strong>➜ Com a aplicação rodando, abra outro terminal e execute o comando:</strong>
+
 Caso utilize o npm
 ```
 npm run cy:run
