@@ -8,6 +8,15 @@
   </a>
 </h2>
 
+## Demonstração
+
+<div align="center">
+  
+
+</div>
+
+<br/>
+
 ## O que foi desenvolvido?
 
 <strong>Coffee Delivery</strong> é uma aplicação que simula a comercialização de cafés. A página principal exibe todos os cafés disponíveis para compra. Na página de checkout, o cliente preenche seus dados, como CEP, cidade, endereço residencial e forma de pagamento. A aplicação permite adicionar, remover e excluir itens do carrinho. Após a finalização da compra, o usuário é direcionado para uma página de sucesso, que mostra as informações sobre a entrega do produto.
@@ -29,8 +38,8 @@ A aplicação foi desenvolvida com Vite (versão 4.4.5), React (versão 18.2.0) 
 - [Immer](https://immerjs.github.io/immer/)
 - [React Toastify](https://fkhadra.github.io/react-toastify/installation/)
 - [Phosphor Icons](https://phosphoricons.com/)
-- [Git](https://git-scm.com/)
 - [Cypress](https://www.cypress.io/)
+- [Git](https://git-scm.com/)
 
 ## Instalação e execução
 
