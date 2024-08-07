@@ -49,7 +49,7 @@ A aplicação foi desenvolvida com Vite (versão 4.4.5), React (versão 18.2.0) 
 git clone git@github.com:h3zord/coffee-delivery.git
 ```
 
-### 2 - Entre no repositório
+### 2 - Entre no repositório:
 ```
 cd coffee-delivery
 ```
